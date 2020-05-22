@@ -91,9 +91,8 @@ if ( is_array( $btn_list ) && '' !== ( $btn_list ) ) {
 		echo '.fl-node-' . $id . ' .mb-each-btn-' . $btn_id . ' {' .
 
 			check_bg_color_value( $btn_list[ $btn_id ]->mb_color_field ) .
-			'color: #' . $btn_list[ $btn_id ]->mb_text_color . ';
 
-			width: ' . $btn_list[ $btn_id ]->mb_btn_width . 'px;
+			'width: ' . $btn_list[ $btn_id ]->mb_btn_width . 'px;
 			height: ' . $btn_list[ $btn_id ]->mb_btn_height . 'px;' .
 
 			check_spacing_value( $btn_list[ $btn_id ]->mb_btn_padding_top, 'padding', 'top' ) .
@@ -123,12 +122,16 @@ if ( is_array( $btn_list ) && '' !== ( $btn_list ) ) {
 		// Icon Styling.
 		echo '.fl-node-' . $id . ' .mb-icon-style-' . $btn_id . ' {
 			font-size: ' . $btn_list[ $btn_id ]->mb_icon_size . 'px;
-			color: #' . $btn_list[ $btn_id ]->mb_icon_color . 'px;' .
+			color: #' . $btn_list[ $btn_id ]->mb_icon_color . ';' .
 			check_spacing_value( $btn_list[ $btn_id ]->mb_icon_spacing, 'margin', 'right' ) .
+		'}';
+		// Title Styling.
+		echo '.fl-node-' . $id . ' .mb-title-typo-' . $btn_id . ' {
+			color: #' . $btn_list[ $btn_id ]->mb_text_color . ';' .
 		'}';
 		// Icon Hover Color.
 		echo '.fl-node-' . $id . ' .mb-icon-style-' . $btn_id . ':hover {
-			color: #' . $btn_list[ $btn_id ]->mb_icon_hover_color . 'px;
+			color: #' . $btn_list[ $btn_id ]->mb_icon_hover_color . ';
 		}';
 
 		// Border Button.
@@ -150,5 +153,42 @@ if ( is_array( $btn_list ) && '' !== ( $btn_list ) ) {
 		);
 	}
 }
+?>
 
+.fl-node-<?php echo $id; ?> .mb-btn-group {
+	<?php if ( isset( $settings->mb_btn_alignment ) && 'left' === ( $settings->mb_btn_alignment ) ) { ?>
+			justify-content: flex-start;
+		<?php
 
+	}
+	if ( isset( $settings->mb_btn_alignment ) && 'right' === ( $settings->mb_btn_alignment ) ) {
+		?>
+			justify-content: flex-end;
+		<?php
+
+	}
+
+	if ( isset( $settings->mb_btn_alignment ) && 'center' === ( $settings->mb_btn_alignment ) ) {
+		?>
+			justify-content: center;
+		<?php
+
+	}
+	if ( isset( $settings->mb_btn_alignment ) && 'space_between' === ( $settings->mb_btn_alignment ) ) {
+		?>
+			justify-content: space-between;
+		<?php
+
+	}
+	if ( isset( $settings->mb_btn_alignment ) && 'space_around' === ( $settings->mb_btn_alignment ) ) {
+		?>
+			justify-content: space-around;
+		<?php
+
+	}
+	?>
+}
+
+.fl-node-<?php echo $id; ?> .mb-btn-container {
+	margin-right: <?php echo $settings->spacing_between_button; ?>px;
+}

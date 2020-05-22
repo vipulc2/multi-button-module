@@ -10,7 +10,7 @@ if ( is_array( $btn_list ) && '' !== ( $btn_list ) ) { ?>
 			<div class="mb-btn-container">
 				<?php if ( isset( $each_btn->mb_btn_type ) && 'none' === ( $each_btn->mb_btn_type ) ) { ?>
 
-					<a class="mb-each-btn-<?php echo $btn_id; ?>  mb-btn-preset" href="<?php echo $each_btn->btn_link; ?>"><span class="mb-title-preset mb-title-typo-<?php echo $btn_id; ?>"><?php echo $each_btn->btn_title; ?></span>
+					<a class="mb-each-btn-<?php echo $btn_id; ?>  mb-btn-preset" href="<?php echo $each_btn->btn_link; ?>"><span class="mb-title-preset mp-title-none-preset mb-title-typo-<?php echo $btn_id; ?>"><?php echo $each_btn->btn_title; ?></span>
 					</a>
 
 				<?php } ?>

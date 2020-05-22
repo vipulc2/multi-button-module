@@ -1,14 +1,15 @@
 .mb-btn-group {
-	display: block;
+	display: flex;
+	flex-wrap: wrap;
 	width: 100%;
 	height: auto;
 }
 
 .mb-btn-container {
-	display: inline-block;
+
 	max-width: 100%;
 	height: auto;
-	text-align: center;
+	margin: 5px;
 }
 
 .mb-btn-preset {
@@ -18,28 +19,36 @@
 	width: 150px;
 	height: 80px;
 	border-radius: 10px;
+	background-color: #337ab7;
+	padding: 10px;
 }
 
 .mb-img-preset {
-	flex: 1;
-	width: 80px;
-	height: 65px;
-	margin: auto;
+
+	width: 50px;
+	height: 35px;
+	margin: auto 0px auto auto;
 	border-radius: 10px;
 }
 
 .mb-icon-preset {
-	flex: 1;
-	margin: auto;
+
+	margin: auto 0px auto auto;
 	font-size: 22px;
 }
 
 .mb-title-preset {
-	flex: 2;
-	margin: auto;
+
+	margin: auto auto auto 0px;
 	font-size: 22px;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	color: #fff;
 
+}
+
+.mp-title-none-preset {
+
+	margin: auto;
 }

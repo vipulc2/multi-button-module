@@ -12,9 +12,9 @@
  */
 
 /**
- * Summary. VIconModule Class inherits from Beaver Builder Class
+ * Summary. MBMultiButton Class inherits from Beaver Builder Class
  *
- * Description The class that extends to Beaver Builder Class for VC Icon List.
+ * Description The class that extends to Beaver Builder Class for Multi Button Module.
  *
  * @since 1.0.0
  */
@@ -53,7 +53,7 @@ class MBMultiButton extends FLBuilderModule {
 FLBuilder::register_module(
 	'MBMultiButton',
 	array(
-		'button_content_tab' => array(
+		'button_content_tab'       => array(
 			'title'    => __( 'Button Content', 'fl-builder' ), // Name of First Tab.
 			'sections' => array(
 				'select_button' => array(
@@ -64,6 +64,39 @@ FLBuilder::register_module(
 							'label'    => __( 'Button', 'fl-builder' ),
 							'form'     => 'mb_multi_btn_form',
 							'multiple' => true,
+						),
+					),
+				),
+			),
+		),
+		'button_container_spacing' => array(
+			'title'    => __( 'Spacing', 'fl-builder' ), // Name of Second Tab.
+			'sections' => array(
+				'spacing_of_button' => array(
+					'title'  => '',
+					'fields' => array(
+						'spacing_between_button' => array(
+							'type'        => 'unit',
+							'label'       => 'Spacing Between Buttons',
+							'slider'      => true,
+							'description' => 'px',
+							'preview'     => array(
+								'type'     => 'css',
+								'selector' => '.mb-btn-container',
+								'property' => 'margin-right',
+							),
+						),
+						'mb_btn_alignment'       => array(
+							'type'    => 'select',
+							'label'   => __( 'Select Type', 'fl-builder' ),
+							'default' => 'none',
+							'options' => array(
+								'left'          => __( 'Left', 'fl-builder' ),
+								'right'         => __( 'Right', 'fl-builder' ),
+								'center'        => __( 'Center', 'fl-builder' ),
+								'space_between' => __( 'Space Between', 'fl-builder' ),
+								'space_around'  => __( 'Space Around', 'fl-builder' ),
+							),
 						),
 					),
 				),
@@ -87,12 +120,14 @@ FLBuilder::register_settings_form(
 						'title'  => '',
 						'fields' => array(
 							'btn_title'      => array(
-								'type'  => 'text',
-								'label' => __( 'Button Title', 'fl-builder' ),
+								'type'    => 'text',
+								'default' => 'Button',
+								'label'   => __( 'Button Title', 'fl-builder' ),
 							),
 							'btn_link'       => array(
-								'type'  => 'link',
-								'label' => __( 'Button Link', 'fl-builder' ),
+								'type'    => 'link',
+								'default' => '#',
+								'label'   => __( 'Button Link', 'fl-builder' ),
 							),
 							'mb_btn_type'    => array(
 								'type'    => 'select',
@@ -106,18 +141,18 @@ FLBuilder::register_settings_form(
 								'toggle'  => array(
 									'none'  => array(
 										'fields'   => array(),
-										'sections' => array( 'my_section' ),
-										'tabs'     => array( 'my_tab' ),
+										'sections' => array(),
+										'tabs'     => array(),
 									),
 									'icon'  => array(
 										'fields'   => array( 'mb_icon_field', 'mb_icon_size', 'mb_icon_color', 'mb_icon_hover_color', 'mb_icon_spacing' ),
-										'sections' => array( 'my_section' ),
-										'tabs'     => array( 'my_tab' ),
+										'sections' => array(),
+										'tabs'     => array(),
 									),
 									'image' => array(
 										'fields'   => array( 'mb_image_field', 'mb_image_size', 'mb_image_spacing', 'mb_image_border_radius' ),
-										'sections' => array( 'my_section' ),
-										'tabs'     => array( 'my_tab' ),
+										'sections' => array(),
+										'tabs'     => array(),
 									),
 								),
 							),
@@ -168,7 +203,7 @@ FLBuilder::register_settings_form(
 							'mb_text_color'       => array(
 								'type'       => 'color',
 								'label'      => __( 'Button Text Color', 'fl-builder' ),
-								'default'    => '444444',
+								'default'    => 'ffffff',
 								'show_reset' => true,
 								'show_alpha' => false,
 								'preview'    => array(
@@ -222,12 +257,14 @@ FLBuilder::register_settings_form(
 								'type'        => 'unit',
 								'label'       => 'Button Width',
 								'slider'      => true,
+								'default'     => 150,
 								'description' => 'px',
 							),
 							'mb_btn_height'    => array(
 								'type'        => 'unit',
 								'label'       => 'Button Height',
 								'slider'      => true,
+								'default'     => 80,
 								'description' => 'px',
 							),
 							'mb_icon_size'     => array(
@@ -282,7 +319,7 @@ FLBuilder::register_settings_form(
 								'responsive' => true,
 								'preview'    => array(
 									'type'     => 'css',
-									'selector' => '.my-selector',
+									'selector' => '.mb-btn-preset',
 								),
 							),
 							'mb_image_border_radius' => array(
@@ -302,7 +339,7 @@ FLBuilder::register_settings_form(
 								'responsive' => true,
 								'preview'    => array(
 									'type'     => 'css',
-									'selector' => '.my-selector',
+									'selector' => '.mb-title-preset',
 								),
 							),
 						),
