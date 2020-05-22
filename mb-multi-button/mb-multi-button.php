@@ -60,37 +60,255 @@ FLBuilder::register_module(
 					'title'  => 'Select Button',
 					'fields' => array(
 						'button_list' => array(
-							'type'     => 'text',
+							'type'     => 'form',
 							'label'    => __( 'Button', 'fl-builder' ),
+							'form'     => 'mb_multi_btn_form',
 							'multiple' => true,
 						),
 					),
 				),
 			),
 		),
-		( function() {
-			$items = $settings->button_list;
-		if ( is_array( $items ) && count( $items ) ) {
 
-			for ( $i = 0; $i < count( $items ); $i++ ) {
-				echo ( "'button_content_tab$i' => array(
-					'title'    => __( 'Button Content', 'fl-builder' ), // Name of First Tab.
-					'sections' => array(
-						'select_button$i' => array(
-							'title'  => 'Select Button',
-							'fields' => array(
-								'button_list$i' => array(
-									'type'     => 'text',
-									'label'    => __( 'Button Addition', 'fl-builder' ),
-									'multiple' => true,
+
+	)
+);
+
+// Register The form for each Button.
+FLBuilder::register_settings_form(
+	'mb_multi_btn_form',
+	array(
+		'title' => __( 'Button Content', 'fl-builder' ),
+		'tabs'  => array(
+			'general'         => array(
+				'title'    => __( 'Button Content', 'fl-builder' ),
+				'sections' => array(
+					'general' => array(
+						'title'  => '',
+						'fields' => array(
+							'btn_title'      => array(
+								'type'  => 'text',
+								'label' => __( 'Button Title', 'fl-builder' ),
+							),
+							'btn_link'       => array(
+								'type'  => 'link',
+								'label' => __( 'Button Link', 'fl-builder' ),
+							),
+							'mb_btn_type'    => array(
+								'type'    => 'select',
+								'label'   => __( 'Select Type', 'fl-builder' ),
+								'default' => 'none',
+								'options' => array(
+									'none'  => __( 'None', 'fl-builder' ),
+									'icon'  => __( 'Icon', 'fl-builder' ),
+									'image' => __( 'Image', 'fl-builder' ),
+								),
+								'toggle'  => array(
+									'none'  => array(
+										'fields'   => array(),
+										'sections' => array( 'my_section' ),
+										'tabs'     => array( 'my_tab' ),
+									),
+									'icon'  => array(
+										'fields'   => array( 'mb_icon_field', 'mb_icon_size', 'mb_icon_color', 'mb_icon_hover_color', 'mb_icon_spacing' ),
+										'sections' => array( 'my_section' ),
+										'tabs'     => array( 'my_tab' ),
+									),
+									'image' => array(
+										'fields'   => array( 'mb_image_field', 'mb_image_size', 'mb_image_spacing', 'mb_image_border_radius' ),
+										'sections' => array( 'my_section' ),
+										'tabs'     => array( 'my_tab' ),
+									),
+								),
+							),
+							'mb_icon_field'  => array(
+								'type'        => 'icon',
+								'label'       => __( 'Icon Field', 'fl-builder' ),
+								'show_remove' => true,
+							),
+							'mb_image_field' => array(
+								'type'        => 'photo',
+								'label'       => __( 'Photo Field', 'fl-builder' ),
+								'show_remove' => true,
+							),
+						),
+					),
+				),
+			),
+			'btn_styling'     => array(
+				'title'    => __( 'Style Button', 'fl-builder' ),
+				'sections' => array(
+					'style_section'  => array(
+						'title'  => '',
+						'fields' => array(
+							'mb_color_field'      => array(
+								'type'       => 'color',
+								'label'      => __( 'Button Background Color', 'fl-builder' ),
+								'default'    => '',
+								'show_reset' => true,
+								'show_alpha' => true,
+								'preview'    => array(
+									'type'     => 'css',
+									'selector' => '.mb-each-btn',
+									'property' => 'background-color',
+								),
+							),
+							'mb_hover_color'      => array(
+								'type'       => 'color',
+								'label'      => __( 'Button Hover Color', 'fl-builder' ),
+								'default'    => '',
+								'show_reset' => true,
+								'show_alpha' => true,
+								'preview'    => array(
+									'type'     => 'css',
+									'selector' => '.mb-each-btn',
+									'property' => 'background-color',
+								),
+							),
+							'mb_text_color'       => array(
+								'type'       => 'color',
+								'label'      => __( 'Button Text Color', 'fl-builder' ),
+								'default'    => '444444',
+								'show_reset' => true,
+								'show_alpha' => false,
+								'preview'    => array(
+									'type'     => 'css',
+									'selector' => '.mb-each-btn',
+									'property' => 'color',
+								),
+							),
+							'mb_text_hover_color' => array(
+								'type'       => 'color',
+								'label'      => __( 'Button Hover Text Color', 'fl-builder' ),
+								'default'    => '',
+								'show_reset' => true,
+								'show_alpha' => false,
+								'preview'    => array(
+									'type'     => 'css',
+									'selector' => '.mb-each-btn',
+									'property' => 'color',
+								),
+							),
+							'mb_icon_color'       => array(
+								'type'       => 'color',
+								'label'      => __( 'Icon Color', 'fl-builder' ),
+								'default'    => '444444',
+								'show_reset' => true,
+								'show_alpha' => false,
+								'preview'    => array(
+									'type'     => 'css',
+									'selector' => '.mb-each-btn',
+									'property' => 'color',
+								),
+							),
+							'mb_icon_hover_color' => array(
+								'type'       => 'color',
+								'label'      => __( 'Icon Hover Color', 'fl-builder' ),
+								'default'    => '333333',
+								'show_reset' => true,
+								'show_alpha' => false,
+								'preview'    => array(
+									'type'     => 'css',
+									'selector' => '.mb-each-btn',
+									'property' => 'color',
 								),
 							),
 						),
 					),
-				)," );
-			}
-		}
-		} )();
-
+					'sizing_section' => array(
+						'title'  => 'Sizing',
+						'fields' => array(
+							'mb_btn_width'     => array(
+								'type'        => 'unit',
+								'label'       => 'Button Width',
+								'slider'      => true,
+								'description' => 'px',
+							),
+							'mb_btn_height'    => array(
+								'type'        => 'unit',
+								'label'       => 'Button Height',
+								'slider'      => true,
+								'description' => 'px',
+							),
+							'mb_icon_size'     => array(
+								'type'        => 'unit',
+								'label'       => 'Icon Size',
+								'slider'      => true,
+								'description' => 'px',
+							),
+							'mb_icon_spacing'  => array(
+								'type'        => 'unit',
+								'label'       => 'Icon Spacing',
+								'slider'      => true,
+								'description' => 'px',
+							),
+							'mb_image_size'    => array(
+								'type'        => 'unit',
+								'label'       => 'Image Size',
+								'slider'      => true,
+								'description' => 'px',
+							),
+							'mb_image_spacing' => array(
+								'type'        => 'unit',
+								'label'       => 'Image Spacing',
+								'slider'      => true,
+								'description' => 'px',
+							),
+							'mb_btn_margin'    => array(
+								'type'        => 'dimension',
+								'label'       => 'Button Margin',
+								'slider'      => true,
+								'description' => 'px',
+							),
+							'mb_btn_padding'   => array(
+								'type'        => 'dimension',
+								'label'       => 'Button Padding',
+								'slider'      => true,
+								'description' => 'px',
+							),
+						),
+					),
+				),
+			),
+			'btn_typo_border' => array(
+				'title'    => __( 'Border & Typography', 'fl-builder' ),
+				'sections' => array(
+					'border_section' => array(
+						'title'  => '',
+						'fields' => array(
+							'mb_button_border'       => array(
+								'type'       => 'border',
+								'label'      => 'Button Border',
+								'responsive' => true,
+								'preview'    => array(
+									'type'     => 'css',
+									'selector' => '.my-selector',
+								),
+							),
+							'mb_image_border_radius' => array(
+								'type'        => 'unit',
+								'label'       => 'Image Border Radius',
+								'slider'      => true,
+								'description' => 'px',
+							),
+						),
+					),
+					'typo_section'   => array(
+						'title'  => 'Typography',
+						'fields' => array(
+							'mb_title_typography' => array(
+								'type'       => 'typography',
+								'label'      => 'Title Typography',
+								'responsive' => true,
+								'preview'    => array(
+									'type'     => 'css',
+									'selector' => '.my-selector',
+								),
+							),
+						),
+					),
+				),
+			),
+		),
 	)
 );
