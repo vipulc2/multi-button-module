@@ -19,7 +19,7 @@
 	width: 150px;
 	height: 80px;
 	border-radius: 10px;
-	background-color: #337ab7;
+	/* background-color: #337ab7; */
 	padding: 10px;
 }
 
@@ -44,7 +44,7 @@
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	color: #fff;
+	color: #000;
 
 }
 

@@ -79,7 +79,105 @@ function check_spacing_value( $spacing_instance, $spacing_type, $spacing_directi
 			}
 		}
 	}
+} ?>
+
+.fl-node-<?php $id; ?> .mb-btn-uniform {
+<?php if ( isset( $settings->mb_btn_width_uniform ) && '' !== ( $settings->mb_btn_width_uniform ) ) { ?>
+	width: <?php echo $settings->mb_btn_width_uniform; ?>px;
+<?php } ?>
+
+<?php if ( isset( $settings->mb_btn_height_uniform ) && '' !== ( $settings->mb_btn_height_uniform ) ) { ?>
+	height: <?php echo $settings->mb_btn_height_uniform; ?>px;
+<?php } ?>
+
+<?php if ( isset( $settings->mb_btn_padding_uniform_top ) && '' !== ( $settings->mb_btn_padding_uniform_top ) ) { ?>
+	padding-top: <?php echo $settings->mb_btn_width_uniform_top; ?>px;
+<?php } ?>
+
+<?php if ( isset( $settings->mb_btn_padding_uniform_right ) && '' !== ( $settings->mb_btn_padding_uniform_right ) ) { ?>
+	padding-right: <?php echo $settings->mb_btn_padding_uniform_right; ?>px;
+<?php } ?>
+
+<?php if ( isset( $settings->mb_btn_padding_uniform_bottom ) && '' !== ( $settings->mb_btn_padding_uniform_bottom ) ) { ?>
+	padding-bottom: <?php echo $settings->mb_btn_padding_uniform_bottom; ?>px;
+<?php } ?>
+
+<?php if ( isset( $settings->mb_btn_padding_uniform_left ) && '' !== ( $settings->mb_btn_padding_uniform_left ) ) { ?>
+	padding-left: <?php echo $settings->mb_btn_padding_uniform_left; ?>px;
+<?php } ?>
+
+<?php if ( isset( $settings->mb_bg_color_uniform ) && ! empty( $settings->mb_bg_color_uniform ) ) { ?>
+	background-color: <?php echo verify_color_type( $settings->mb_bg_color_uniform ); ?>;
+<?php } ?>
+
+<?php if ( isset( $settings->mb_text_color_uniform ) && ! empty( $settings->mb_text_color_uniform ) ) { ?>
+	color: #<?php echo ( $settings->mb_text_color_uniform ); ?>;
+<?php } ?>
+
 }
+
+.fl-node-<?php $id; ?> .mb-btn-uniform:hover {
+
+	<?php if ( isset( $settings->mb_hover_color_uniform ) && ! empty( $settings->mb_hover_color_uniform ) ) { ?>
+	background-color: <?php echo verify_color_type( $settings->mb_hover_color_uniform ); ?>;
+<?php } ?>
+
+	<?php if ( isset( $settings->mb_hover_color_uniform ) && ! empty( $settings->mb_hover_color_uniform ) ) { ?>
+	color: #<?php echo ( $settings->mb_hover_color_uniform ); ?>;
+<?php } ?>
+}
+
+.fl-node-<?php $id; ?> .mb-title-uniform {
+
+}
+.fl-node-<?php $id; ?> .mb-icon-uniform {
+
+<?php if ( isset( $settings->mb_icon_size_uniform ) && '' !== ( $settings->mb_icon_size_uniform ) ) { ?>
+	font-size: <?php echo $settings->mb_icon_size_uniform; ?>px;
+<?php } ?>
+
+<?php if ( isset( $settings->mb_icon_spacing_uniform ) && '' !== ( $settings->mb_icon_spacing_uniform ) ) { ?>
+	margin-right: <?php echo $settings->mb_icon_spacing_uniform; ?>px;
+<?php } ?>
+
+}
+.fl-node-<?php $id; ?> .mb-img-uniform {
+
+<?php if ( isset( $settings->mb_icon_size_uniform ) && '' !== ( $settings->mb_icon_size_uniform ) ) { ?>
+	width: <?php echo $settings->mb_icon_size_uniform; ?>px;
+	height: calc( 20px - <?php echo $settings->mb_icon_size_uniform; ?> )px;
+<?php } ?>
+
+<?php if ( isset( $settings->mb_icon_spacing_uniform ) && '' !== ( $settings->mb_icon_spacing_uniform ) ) { ?>
+	margin-right: <?php echo $settings->mb_icon_spacing_uniform; ?>px;
+<?php } ?>
+
+<?php if ( isset( $settings->mb_image_border_radius_uniform ) && '' !== ( $settings->mb_image_border_radius_uniform ) ) { ?>
+	border-radius: <?php echo $settings->mb_image_border_radius_uniform; ?>px;
+<?php } ?>
+
+}
+<?php
+// Typography Union.
+	FLBuilderCSS::typography_field_rule(
+		array(
+			'settings'     => $settings,
+			'setting_name' => 'typo_section_uniform',
+			'selector'     => ".fl-node-$id .mb-title-uniform",
+		)
+	);
+
+	// Button Border Union.
+	FLBuilderCSS::border_field_rule(
+		array(
+			'settings'     => $settings,
+			'setting_name' => 'mb_button_border_uniform',
+			'selector'     => ".fl-node-$id .mb-btn-uniform",
+		)
+	);
+	?>
+
+<?php
 // Variable that is received from the form of each Button.
 $btn_list = $settings->button_list;
 
@@ -190,5 +288,12 @@ if ( is_array( $btn_list ) && '' !== ( $btn_list ) ) {
 }
 
 .fl-node-<?php echo $id; ?> .mb-btn-container {
-	margin-right: <?php echo $settings->spacing_between_button; ?>px;
+	<?php if ( isset( $settings->horizontal_spacing_between_button ) && '' !== ( $settings->horizontal_spacing_between_button ) && 'row' === ( $settings->mb_button_layout_union ) ) { ?>
+	margin-right: <?php echo $settings->horizontal_spacing_between_button; ?>px;
+<?php } ?>
+
+	<?php if ( isset( $settings->vertical_spacing_between_button ) && '' !== ( $settings->vertical_spacing_between_button ) && 'column' === ( $settings->mb_button_layout_union ) ) { ?>
+	margin-bottom: <?php echo $settings->vertical_spacing_between_button; ?>px;
+<?php } ?>
+
 }
