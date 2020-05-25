@@ -69,12 +69,12 @@ FLBuilder::register_module(
 							),
 							'toggle'  => array(
 								'row'    => array(
-									'fields'   => array( 'vertical_spacing_between_button' ),
+									'fields'   => array( 'horizontal_spacing_between_button' ),
 									'sections' => array(),
 									'tabs'     => array(),
 								),
 								'column' => array(
-									'fields'   => array( 'horizontal_spacing_between_button' ),
+									'fields'   => array( 'vertical_spacing_between_button' ),
 									'sections' => array(),
 									'tabs'     => array(),
 								),
@@ -128,7 +128,7 @@ FLBuilder::register_module(
 							'show_alpha' => false,
 							'preview'    => array(
 								'type'     => 'css',
-								'selector' => '.mb-btn-uniform',
+								'selector' => '.mb-title-uniform',
 								'property' => 'color',
 							),
 						),
@@ -243,15 +243,13 @@ FLBuilder::register_module(
 							),
 						),
 						'mb_btn_alignment'                => array(
-							'type'    => 'select',
-							'label'   => __( 'Select Type', 'fl-builder' ),
-							'default' => 'none',
-							'options' => array(
-								'left'          => __( 'Left', 'fl-builder' ),
-								'right'         => __( 'Right', 'fl-builder' ),
-								'center'        => __( 'Center', 'fl-builder' ),
-								'space_between' => __( 'Space Between', 'fl-builder' ),
-								'space_around'  => __( 'Space Around', 'fl-builder' ),
+							'type'    => 'align',
+							'label'   => 'Button Align',
+							'default' => 'left',
+							'preview' => array(
+								'type'     => 'css',
+								'selector' => '.mb-btn-group-column',
+								'property' => 'align-items',
 							),
 						),
 					),
@@ -272,19 +270,19 @@ FLBuilder::register_module(
 						'general' => array(
 							'title'  => '',
 							'fields' => array(
-								'btn_title'      => array(
+								'btn_title'        => array(
 									'type'    => 'text',
 									'default' => 'Button',
 									'label'   => __( 'Title', 'fl-builder' ),
 								),
-								'btn_link'       => array(
+								'btn_link'         => array(
 									'type'          => 'link',
 									'default'       => '#',
 									'label'         => __( 'Link', 'fl-builder' ),
 									'show_target'   => true,
 									'show_nofollow' => true,
 								),
-								'mb_btn_type'    => array(
+								'mb_btn_type'      => array(
 									'type'    => 'select',
 									'label'   => __( 'Button Icon', 'fl-builder' ),
 									'default' => 'none',
@@ -300,26 +298,47 @@ FLBuilder::register_module(
 											'tabs'     => array(),
 										),
 										'icon'  => array(
-											'fields'   => array( 'mb_icon_field', 'mb_icon_size', 'mb_icon_color', 'mb_icon_hover_color', 'mb_icon_spacing' ),
+											'fields'   => array( 'mb_icon_field', 'mb_icon_size', 'mb_icon_color', 'mb_icon_hover_color', 'mb_icon_spacing', 'mb_icon_position' ),
 											'sections' => array(),
 											'tabs'     => array(),
 										),
 										'image' => array(
-											'fields'   => array( 'mb_image_field', 'mb_image_size', 'mb_image_spacing', 'mb_image_border_radius' ),
+											'fields'   => array( 'mb_image_field', 'mb_image_size', 'mb_image_spacing', 'mb_image_border_radius', 'mb_icon_position' ),
 											'sections' => array(),
 											'tabs'     => array(),
 										),
 									),
 								),
-								'mb_icon_field'  => array(
+								'mb_icon_field'    => array(
 									'type'        => 'icon',
 									'label'       => __( 'Icon Field', 'fl-builder' ),
 									'show_remove' => true,
 								),
-								'mb_image_field' => array(
+								'mb_image_field'   => array(
 									'type'        => 'photo',
 									'label'       => __( 'Photo Field', 'fl-builder' ),
 									'show_remove' => true,
+								),
+								'mb_icon_position' => array(
+									'type'    => 'select',
+									'label'   => __( 'Icon Position', 'fl-builder' ),
+									'default' => 'before',
+									'options' => array(
+										'before' => __( 'Before', 'fl-builder' ),
+										'after'  => __( 'After', 'fl-builder' ),
+									),
+									'toggle'  => array(
+										'before' => array(
+											'fields'   => array(),
+											'sections' => array(),
+											'tabs'     => array(),
+										),
+										'after'  => array(
+											'fields'   => array(),
+											'sections' => array(),
+											'tabs'     => array(),
+										),
+									),
 								),
 							),
 						),

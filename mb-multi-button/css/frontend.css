@@ -1,53 +1,72 @@
-.mb-btn-group {
+/* ------------------------ */
+/* Button Group */
+/* ------------------------ */
+
+/* ROW */
+.mb-btn-group-row {
 	display: flex;
+	flex-direction: row;
 	flex-wrap: wrap;
 	width: 100%;
 	height: auto;
 }
 
+/* COLUMN */
+.mb-btn-group-column {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	max-width: 100%;
+	height: auto;
+}
+
+/* ------------------------ */
+/* Button Container */
+/* ------------------------ */
 .mb-btn-container {
 
 	max-width: 100%;
 	height: auto;
 	margin: 5px;
 }
+/* ------------------------ */
+/* Presets */
+/* ------------------------ */
 
+/* Button Preset */
 .mb-btn-preset {
 	display: flex;
-	margin: auto;
 	max-width: 100%;
-	width: 150px;
-	height: 80px;
 	border-radius: 10px;
 	/* background-color: #337ab7; */
 	padding: 10px;
 }
 
+/* Image Preset */
 .mb-img-preset {
 
 	width: 50px;
 	height: 35px;
 	margin: auto 0px auto auto;
-	border-radius: 10px;
 }
 
+/* Icon Preset */
 .mb-icon-preset {
 
 	margin: auto 0px auto auto;
-	font-size: 22px;
 }
 
+/* Title Preset */
 .mb-title-preset {
 
 	margin: auto auto auto 0px;
-	font-size: 22px;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	color: #000;
 
 }
 
+/* Preset for Title w/o Icon */
 .mp-title-none-preset {
 
 	margin: auto;
