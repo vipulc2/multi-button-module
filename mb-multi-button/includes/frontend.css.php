@@ -16,9 +16,7 @@ $btn_list = $settings->button_list;
 
 // Condition to check if the value is an array and is not empty.
 // COMMON CSS style for the module.
-if ( is_array( $btn_list ) && '' !== ( $btn_list ) ) {
-	foreach ( $btn_list as $btn_id => $each_btn ) {
-		?>
+?>
 
 	.fl-node-<?php echo $id; ?> .mb-btn-uniform {
 
@@ -80,26 +78,35 @@ if ( is_array( $btn_list ) && '' !== ( $btn_list ) ) {
 
 	}
 
+	.fl-node-<?php echo $id; ?> .mb-icon-before {
+		margin: auto 0 auto auto;
+		margin-right: <?php echo $settings->mb_icon_spacing_uniform; ?>px;
+
+	}
+
+	.fl-node-<?php echo $id; ?> .mb-icon-after {
+		margin: auto auto auto 0;
+		margin-left: <?php echo $settings->mb_icon_spacing_uniform; ?>px;
+	}
 
 	.fl-node-<?php echo $id; ?> .mb-img-uniform {
 
 		<?php if ( isset( $settings->mb_icon_size_uniform ) && '' !== ( $settings->mb_icon_size_uniform ) ) { ?>
 			width: <?php echo $settings->mb_icon_size_uniform; ?>px;
-			height: calc( 20px - <?php echo $settings->mb_icon_size_uniform; ?> )px;
-			<?php } ?>	
-
-		<?php if ( isset( $settings->mb_icon_spacing_uniform ) && '' !== ( $settings->mb_icon_spacing_uniform ) && 'before' === ( $btn_list[ $btn_id ]->mb_icon_position ) ) { ?>
-			margin-right: <?php echo $settings->mb_icon_spacing_uniform; ?>px;
-			<?php } ?>
-
-		<?php if ( isset( $settings->mb_icon_spacing_uniform ) && '' !== ( $settings->mb_icon_spacing_uniform ) && 'after' === ( $btn_list[ $btn_id ]->mb_icon_position ) ) { ?>
-			margin-left: <?php echo $settings->mb_icon_spacing_uniform; ?>px;
+			height: calc( <?php echo $settings->mb_icon_size_uniform; ?>px - 10px );
 			<?php } ?>
 
 		<?php if ( isset( $settings->mb_image_border_radius_uniform ) && '' !== ( $settings->mb_image_border_radius_uniform ) ) { ?>
-			border-radius: <?php $settings->mb_image_border_radius_uniform; ?>px;
+			border-radius: <?php echo $settings->mb_image_border_radius_uniform; ?>px;
 			<?php } ?>
+	}
 
+	.fl-node-<?php echo $id; ?> .mb-title-after {
+		margin: auto auto auto 0;
+	}
+
+	.fl-node-<?php echo $id; ?> .mb-title-before {
+		margin: auto 0 auto auto;
 	}
 
 	.fl-node-<?php echo $id; ?> .mb-icon-uniform {
@@ -107,18 +114,6 @@ if ( is_array( $btn_list ) && '' !== ( $btn_list ) ) {
 		<?php if ( isset( $settings->mb_icon_size_uniform ) && '' !== ( $settings->mb_icon_size_uniform ) ) { ?>
 			font-size: <?php echo $settings->mb_icon_size_uniform; ?>px;
 			<?php } ?>
-
-		<?php if ( isset( $settings->mb_icon_spacing_uniform ) && '' !== ( $settings->mb_icon_spacing_uniform ) && 'before' === ( $btn_list[ $btn_id ]->mb_icon_position ) ) { ?>
-			margin-right: <?php echo $settings->mb_icon_spacing_uniform; ?>px;
-			<?php } ?>
-
-		<?php if ( isset( $settings->mb_icon_spacing_uniform ) && '' !== ( $settings->mb_icon_spacing_uniform ) && 'after' === ( $btn_list[ $btn_id ]->mb_icon_position ) ) { ?>
-			margin-left: <?php echo $settings->mb_icon_spacing_uniform; ?>px;
-			<?php } ?>
-	}
-
-	.fl-node-<?php echo $id; ?> .mb-icon-uniform:hover {
-
 	}
 
 		<?php
@@ -155,9 +150,7 @@ if ( is_array( $btn_list ) && '' !== ( $btn_list ) ) {
 				),
 			)
 		);
-	}
-}
-?>
+		?>
 
 <?php
 // Variable that is received from the form of each Button.
@@ -227,7 +220,7 @@ if ( is_array( $btn_list ) && '' !== ( $btn_list ) ) {
 
 		<?php if ( isset( $btn_list[ $btn_id ]->mb_image_size ) && '' !== ( $btn_list[ $btn_id ]->mb_image_size ) ) { ?>
 			width: <?php echo $btn_list[ $btn_id ]->mb_image_size; ?>px;
-			height: calc( 20px - <?php echo $btn_list[ $btn_id ]->mb_image_size; ?> )px;
+			height: calc( <?php echo $btn_list[ $btn_id ]->mb_image_size; ?>px - 10px );
 			<?php } ?>
 
 		<?php if ( isset( $btn_list[ $btn_id ]->mb_image_border_radius ) && '' !== ( $btn_list[ $btn_id ]->mb_image_border_radius ) ) { ?>
