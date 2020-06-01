@@ -52,15 +52,28 @@ $buttons = $settings->button_list;
 			<?php } ?>
 	}
 
-	.fl-node-<?php echo $id; ?> .mb-icon-before {
-		margin: auto 0 auto auto;
-		margin-right: <?php echo $settings->mb_common_icon_space; ?>px;
-
+	.fl-node-<?php echo $id; ?> .mb-button-icon-before .mb-icon {
+		<?php if ( isset( $settings->mb_common_icon_space ) && '' !== ( $settings->mb_common_icon_space ) ) { ?>
+			margin-right: <?php echo $settings->mb_common_icon_space; ?>px;
+			<?php } ?>
 	}
 
-	.fl-node-<?php echo $id; ?> .mb-icon-after {
-		margin: auto auto auto 0;
-		margin-left: <?php echo $settings->mb_common_icon_space; ?>px;
+	.fl-node-<?php echo $id; ?> .mb-button-icon-after .mb-icon {
+		<?php if ( isset( $settings->mb_common_icon_space ) && '' !== ( $settings->mb_common_icon_space ) ) { ?>
+			margin-left: <?php echo $settings->mb_common_icon_space; ?>px;
+			<?php } ?>
+	}
+
+	.fl-node-<?php echo $id; ?> .mb-button-icon-before .mb-image {
+		<?php if ( isset( $settings->mb_common_icon_space ) && '' !== ( $settings->mb_common_icon_space ) ) { ?>
+			margin-right: <?php echo $settings->mb_common_icon_space; ?>px;
+			<?php } ?>
+	}
+
+	.fl-node-<?php echo $id; ?> .mb-button-icon-after .mb-image {
+		<?php if ( isset( $settings->mb_common_icon_space ) && '' !== ( $settings->mb_common_icon_space ) ) { ?>
+			margin-left: <?php echo $settings->mb_common_icon_space; ?>px;
+			<?php } ?>
 	}
 
 	.fl-node-<?php echo $id; ?> .mb-image {
@@ -168,7 +181,7 @@ if ( is_array( $buttons ) && '' !== ( $buttons ) ) {
 		}
 
 
-	.fl-node-<?php echo $id; ?> .mb-image-<?php echo $index; ?> {
+	.fl-node-<?php echo $id; ?> .mb-button-<?php echo $index; ?> img.mb-image {
 
 		<?php if ( isset( $buttons[ $index ]->mb_image_size ) && '' !== ( $buttons[ $index ]->mb_image_size ) ) { ?>
 			width: <?php echo $buttons[ $index ]->mb_image_size; ?>px;
@@ -177,13 +190,6 @@ if ( is_array( $buttons ) && '' !== ( $buttons ) ) {
 
 		<?php if ( isset( $buttons[ $index ]->mb_image_border_radius ) && '' !== ( $buttons[ $index ]->mb_image_border_radius ) ) { ?>
 			border-radius: <?php echo $buttons[ $index ]->mb_image_border_radius; ?>px;
-			<?php } ?>
-
-		<?php if ( isset( $buttons[ $index ]->mb_icon_position ) && '' !== ( $buttons[ $index ]->mb_icon_position ) && 'before' === ( $buttons[ $index ]->mb_icon_position ) ) { ?>
-			order: 1;
-			<?php } ?>
-		<?php if ( isset( $buttons[ $index ]->mb_icon_position ) && '' !== ( $buttons[ $index ]->mb_icon_position ) && 'after' === ( $buttons[ $index ]->mb_icon_position ) ) { ?>
-			order: 2;
 			<?php } ?>
 
 		<?php if ( isset( $buttons[ $index ]->mb_image_spacing ) && '' !== ( $buttons[ $index ]->mb_image_spacing ) && 'before' === ( $buttons[ $index ]->mb_icon_position ) ) { ?>
@@ -202,20 +208,13 @@ if ( is_array( $buttons ) && '' !== ( $buttons ) ) {
 	}
 
 
-	.fl-node-<?php echo $id; ?> .mb-icon-<?php echo $index; ?> {
+	.fl-node-<?php echo $id; ?> .mb-button-<?php echo $index; ?> span.mb-icon {
 
 		<?php if ( isset( $buttons[ $index ]->mb_icon_size ) && '' !== ( $buttons[ $index ]->mb_icon_size ) ) { ?>
 			font-size: <?php echo $buttons[ $index ]->mb_icon_size; ?>px;
 			<?php } ?>
 		<?php if ( isset( $buttons[ $index ]->mb_icon_color ) && ! empty( $buttons[ $index ]->mb_icon_color ) ) { ?>
 			color: #<?php echo $buttons[ $index ]->mb_icon_color; ?> ;
-			<?php } ?>
-
-		<?php if ( isset( $buttons[ $index ]->mb_icon_position ) && '' !== ( $buttons[ $index ]->mb_icon_position ) && 'before' === ( $buttons[ $index ]->mb_icon_position ) ) { ?>
-			order: 1;
-			<?php } ?>
-		<?php if ( isset( $buttons[ $index ]->mb_icon_position ) && '' !== ( $buttons[ $index ]->mb_icon_position ) && 'after' === ( $buttons[ $index ]->mb_icon_position ) ) { ?>
-			order: 2;
 			<?php } ?>
 
 		<?php if ( isset( $buttons[ $index ]->mb_icon_spacing ) && '' !== ( $buttons[ $index ]->mb_icon_spacing ) && 'before' === ( $buttons[ $index ]->mb_icon_position ) ) { ?>
@@ -234,14 +233,7 @@ if ( is_array( $buttons ) && '' !== ( $buttons ) ) {
 
 		}
 
-	.fl-node-<?php echo $id; ?> .mb-title-<?php echo $index; ?> {
-
-		<?php if ( isset( $buttons[ $index ]->mb_icon_position ) && '' !== ( $buttons[ $index ]->mb_icon_position ) && 'before' === ( $buttons[ $index ]->mb_icon_position ) && ( ( 'icon' === ( $buttons[ $index ]->mb_icon_type ) ) || ( 'image' === ( $buttons[ $index ]->mb_icon_type ) ) ) ) { ?>
-			order: 2;
-			<?php } ?>
-		<?php if ( isset( $buttons[ $index ]->mb_icon_position ) && '' !== ( $buttons[ $index ]->mb_icon_position ) && 'after' === ( $buttons[ $index ]->mb_icon_position ) && ( ( 'icon' === ( $buttons[ $index ]->mb_icon_type ) ) || ( 'image' === ( $buttons[ $index ]->mb_icon_type ) ) ) ) { ?>
-			order: 1;
-			<?php } ?>
+	.fl-node-<?php echo $id; ?> .mb-button-<?php echo $index; ?> span.mb-title {
 
 		<?php if ( isset( $buttons[ $index ]->mb_icon_position ) && '' !== ( $buttons[ $index ]->mb_icon_position ) && 'before' === ( $buttons[ $index ]->mb_icon_position ) && ( ( 'icon' === ( $buttons[ $index ]->mb_icon_type ) ) || ( 'image' === ( $buttons[ $index ]->mb_icon_type ) ) ) ) { ?>
 			margin: auto auto auto 0;
@@ -252,7 +244,7 @@ if ( is_array( $buttons ) && '' !== ( $buttons ) ) {
 
 		}
 
-	.fl-node-<?php echo $id; ?> .mb-icon-<?php echo $index; ?>:hover {
+	.fl-node-<?php echo $id; ?> .mb-button-<?php echo $index; ?> span.mb-icon:hover {
 		<?php if ( isset( $buttons[ $index ]->mb_icon_hover_color ) && ! empty( $buttons[ $index ]->mb_icon_hover_color ) ) { ?>
 			color: #<?php echo $buttons[ $index ]->mb_icon_hover_color; ?>;
 			<?php } ?>
@@ -273,7 +265,7 @@ if ( is_array( $buttons ) && '' !== ( $buttons ) ) {
 			array(
 				'settings'     => $buttons[ $index ],
 				'setting_name' => 'mb_title_typography',
-				'selector'     => ".fl-node-$id .mb-title-$index",
+				'selector'     => ".fl-node-$id .mb-title",
 			)
 		);
 

@@ -33,49 +33,31 @@ if ( is_array( $buttons ) && '' !== ( $buttons ) ) {
 			continue;
 		}
 
-		$icon_classes = array(
-			"mb-icon-$index",
-			'mb-icon',
-			"$button->mb_icon_field",
+		$button_classes = array(
+			"mb-button-$index",
+			'mb-button',
 		);
 
-		$image_classes = array(
-			"mb-image-$index",
-			'mb-image',
-		);
-
-		$title_classes = array(
-			"mb-title-$index",
-			'mb-title',
-		);
-
-		if ( ( 'icon' === ( $button->mb_icon_type ) || 'image' === ( $button->mb_icon_type ) ) && 'before' === ( $button->mb_icon_position ) ) {
-			$icon_classes[]  = 'mb-icon-before';
-			$image_classes[] = 'mb-icon-before';
-			$title_classes[] = 'mb-title-after';
-		}
-		if ( ( 'icon' === ( $button->mb_icon_type ) || 'image' === ( $button->mb_icon_type ) ) && 'after' === ( $button->mb_icon_position ) ) {
-			$icon_classes[]  = 'mb-icon-after';
-			$image_classes[] = 'mb-icon-after';
-			$title_classes[] = 'mb-title-before';
+		if ( 'none' !== $button->mb_icon_type ) {
+			$button_classes[] = 'mb-button-icon-' . $button->mb_icon_position;
 		}
 
 		$nofollow = isset( $button->btn_link_nofollow ) && 'yes' === $button->btn_link_nofollow ? ' rel="nofollow"' : '';
 		$target   = isset( $button->btn_link_target ) ? ' target="' . $button->btn_link_target . '"' : '';
 		?>
 
-		<a class="mb-button-<?php echo $index; ?> mb-button" href="<?php echo $button->btn_link; ?>" <?php echo $target; ?><?php echo $nofollow; ?>>
+		<a class="<?php echo implode( ' ', $button_classes ); ?>" href="<?php echo $button->btn_link; ?>" <?php echo $target; ?><?php echo $nofollow; ?>>
 		<?php
 		if ( 'icon' === ( $button->mb_icon_type ) ) {
 			?>
-			<span class="<?php echo implode( ' ', $icon_classes ); ?>"></span>
+			<span class="<?php echo $button->mb_icon_field; ?> mb-icon"></span>
 			<?php
 		}
 		if ( 'image' === ( $button->mb_icon_type ) ) {
 			?>
-			<img class="<?php echo implode( ' ', $image_classes ); ?>" src="<?php echo $button->mb_image_field_src; ?>">
+			<img class="mb-image" src="<?php echo $button->mb_image_field_src; ?>">
 		<?php } ?>
-		<span class="<?php echo implode( ' ', $title_classes ); ?>"><?php echo $button->btn_title; ?></span>
+		<span class="mb-title"><?php echo $button->btn_title; ?></span>
 		</a>
 
 		<?php

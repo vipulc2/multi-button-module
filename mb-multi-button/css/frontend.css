@@ -28,15 +28,31 @@
 	margin: 5px;
 }
 
+.mb-button-icon-before {
+	flex-direction: row;
+}
+
+.mb-button-icon-after {
+	flex-direction: row-reverse;
+}
+
 /* -------------------------- */
 /* Button content*/
 /* -------------------------- */
 
-.mb-icon-before {
+.mb-button-icon-before .mb-icon {
 	margin: auto 0px auto auto;
 }
 
-.mb-icon-after {
+.mb-button-icon-after .mb-icon {
+	margin: auto auto auto 0px;
+}
+
+.mb-button-icon-before .mb-image {
+	margin: auto 0px auto auto;
+}
+
+.mb-button-icon-after .mb-image {
 	margin: auto auto auto 0px;
 }
 
@@ -45,6 +61,7 @@
 	height: 35px;
 }
 
+/* Button Title */
 .mb-title {
 	margin: auto;
 	white-space: nowrap;
@@ -52,10 +69,10 @@
 	text-overflow: ellipsis;
 }
 
-.mb-title-after {
+.mb-button-icon-before .mb-title {
 	margin: auto auto auto 0;
 }
 
-.mb-title-before {
+.mb-button-icon-after .mb-title {
 	margin: auto 0 auto auto;
 }
