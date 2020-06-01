@@ -11,83 +11,75 @@
  * @since 1.0.0
  */
 
-$btn_list = $settings->button_list;
+$wrapper_classes = array(
+	'mb-buttons',
+);
+if ( 'row' === $settings->mb_button_layout ) {
+	$wrapper_classes[] = 'mb-layout-row';
+}
+if ( 'column' === $settings->mb_button_layout ) {
+	$wrapper_classes[] = 'mb-layout-column';
+}
+?>
+<div class="<?php echo implode( ' ', $wrapper_classes ); ?>">
 
-if ( is_array( $btn_list ) && '' !== ( $btn_list ) ) { ?>
+<?php
+$buttons = $settings->button_list;
 
-	<?php if ( 'row' === ( $settings->mb_button_layout_union ) ) { ?>
-	<div class="mb-btn-group-row">
-		<?php
-	}
-	if ( 'column' === ( $settings->mb_button_layout_union ) ) {
+if ( is_array( $buttons ) && '' !== ( $buttons ) ) {
+
+	foreach ( $buttons as $index => $button ) {
+		if ( ! is_object( $button ) ) {
+			continue;
+		}
+
+		$icon_classes = array(
+			"mb-icon-$index",
+			'mb-icon',
+			"$button->mb_icon_field",
+		);
+
+		$image_classes = array(
+			"mb-image-$index",
+			'mb-image',
+		);
+
+		$title_classes = array(
+			"mb-title-$index",
+			'mb-title',
+		);
+
+		if ( ( 'icon' === ( $button->mb_icon_type ) || 'image' === ( $button->mb_icon_type ) ) && 'before' === ( $button->mb_icon_position ) ) {
+			$icon_classes[]  = 'mb-icon-before';
+			$image_classes[] = 'mb-icon-before';
+			$title_classes[] = 'mb-title-after';
+		}
+		if ( ( 'icon' === ( $button->mb_icon_type ) || 'image' === ( $button->mb_icon_type ) ) && 'after' === ( $button->mb_icon_position ) ) {
+			$icon_classes[]  = 'mb-icon-after';
+			$image_classes[] = 'mb-icon-after';
+			$title_classes[] = 'mb-title-before';
+		}
 		?>
-	<div class="mb-btn-group-column">
+
+		<a class="mb-button-<?php echo $index; ?> mb-button" href="<?php echo $button->btn_link; ?>">
 		<?php
-	}
-	foreach ( $btn_list as $btn_id => $each_btn ) {
-		?>
-			<div class="mb-btn-container">
-
-				<?php if ( isset( $each_btn->mb_btn_type ) && 'none' === ( $each_btn->mb_btn_type ) ) { ?>
-
-					<a class="mb-each-btn-<?php echo $btn_id; ?> mb-btn-preset mb-btn-uniform" href="<?php echo $each_btn->btn_link; ?>"><span class="mb-title-preset mp-title-none-preset mb-title-uniform mb-title-typo-<?php echo $btn_id; ?>"><?php echo $each_btn->btn_title; ?></span>
-					</a>
-
-				<?php } ?>
-
-				<?php if ( isset( $each_btn->mb_btn_type ) && 'icon' === ( $each_btn->mb_btn_type ) ) { ?>
-
-					<a class="mb-each-btn-<?php echo $btn_id; ?> mb-btn-preset mb-btn-uniform" href="<?php echo $each_btn->btn_link; ?>"><span class="<?php echo $each_btn->mb_icon_field; ?> mb-icon-style-<?php echo $btn_id; ?>  mb-icon-preset mb-icon-uniform 
-					<?php
-					if ( 'before' === ( $btn_list[ $btn_id ]->mb_icon_position ) ) {
-						echo 'mb-icon-before';
-					}
-					if ( 'after' === ( $btn_list[ $btn_id ]->mb_icon_position ) ) {
-						echo 'mb-icon-after';
-					}
-					?>
-						">
-
-					</span><span class="mb-title-preset mb-title-uniform <?php
-					if ( 'before' === ( $btn_list[ $btn_id ]->mb_icon_position ) ) {
-						echo 'mb-title-after';
-					}
-					if ( 'after' === ( $btn_list[ $btn_id ]->mb_icon_position ) ) {
-						echo 'mb-title-before';
-					}
-					?> mb-title-typo-<?php echo $btn_id; ?>"><?php echo $each_btn->btn_title; ?></span>
-					</a>
-
-				<?php } ?>
-
-				<?php if ( isset( $each_btn->mb_btn_type ) && 'image' === ( $each_btn->mb_btn_type ) ) { ?>
-
-					<a class="mb-each-btn-<?php echo $btn_id; ?> mb-btn-preset mb-btn-uniform" href="<?php echo $each_btn->btn_link; ?>"><img class="mb-img-style-<?php echo $btn_id; ?> mb-img-preset 					<?php
-					if ( 'before' === ( $btn_list[ $btn_id ]->mb_icon_position ) ) {
-						echo 'mb-icon-before';
-					}
-					if ( 'after' === ( $btn_list[ $btn_id ]->mb_icon_position ) ) {
-						echo 'mb-icon-after';
-					}
-					?> mb-img-uniform" src="<?php echo $each_btn->mb_image_field_src; ?>"><span class="mb-title-preset mb-title-uniform 
-					<?php
-					if ( 'before' === ( $btn_list[ $btn_id ]->mb_icon_position ) ) {
-						echo 'mb-title-after';
-					}
-					if ( 'after' === ( $btn_list[ $btn_id ]->mb_icon_position ) ) {
-						echo 'mb-title-before';
-					}
-					?> mb-title-typo-<?php echo $btn_id; ?>"><?php echo $each_btn->btn_title; ?></span>
-					</a>
-
-				<?php } ?>
-			</div>
-
-
+		if ( 'icon' === ( $button->mb_icon_type ) ) {
+			?>
+			<span class="<?php echo implode( ' ', $icon_classes ); ?>"></span>
 			<?php
+		}
+		if ( 'image' === ( $button->mb_icon_type ) ) {
+			?>
+			<img class="<?php echo implode( ' ', $image_classes ); ?>" src="<?php echo $button->mb_image_field_src; ?>">
+		<?php } ?>
+		<span class="<?php echo implode( ' ', $title_classes ); ?>"><?php echo $button->btn_title; ?></span>
+		</a>
+
+		<?php
 	}
-	?>
-	</div>
-	<?php
 }
 
+?>
+
+
+</div>

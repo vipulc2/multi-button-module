@@ -1,69 +1,61 @@
-/* ------------------------ */
-/* Button Group */
-/* ------------------------ */
+/* -------------------------- */
+/* Container for buttons */
+/* -------------------------- */
 
-/* ROW */
-.mb-btn-group-row {
+.mb-buttons {
 	display: flex;
+	flex-wrap: wrap;
+	max-width: 100%;
+}
+
+.mb-layout-row {
 	flex-direction: row;
-	flex-wrap: wrap;
-	max-width: 100%;
 }
 
-/* COLUMN */
-.mb-btn-group-column {
-	display: flex;
+.mb-layout-column {
 	flex-direction: column;
-	flex-wrap: wrap;
-	max-width: 100%;
 }
 
-/* ------------------------ */
-/* Button Container */
-/* ------------------------ */
-.mb-btn-container {
+/* -------------------------- */
+/* Button */
+/* -------------------------- */
 
-	max-width: 100%;
-	margin: 5px;
-}
-/* ------------------------ */
-/* Presets */
-/* ------------------------ */
-
-/* Button Preset */
-.mb-btn-preset {
+.mb-button {
 	display: flex;
 	max-width: 100%;
 	border-radius: 10px;
 	padding: 10px;
+	margin: 5px;
 }
 
-/* Image Preset */
-.mb-img-preset {
+/* -------------------------- */
+/* Button content*/
+/* -------------------------- */
 
+.mb-icon-before {
+	margin: auto 0px auto auto;
+}
+
+.mb-icon-after {
+	margin: auto auto auto 0px;
+}
+
+.mb-image {
 	width: 50px;
 	height: 35px;
-	margin: auto 0px auto auto;
 }
 
-/* Icon Preset */
-.mb-icon-preset {
-
-	margin: auto 0px auto auto;
-}
-
-/* Title Preset */
-.mb-title-preset {
-
-	margin: auto auto auto 0px;
+.mb-title {
+	margin: auto;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
-
 }
 
-/* Preset for Title w/o Icon */
-.mp-title-none-preset {
+.mb-title-after {
+	margin: auto auto auto 0;
+}
 
-	margin: auto;
+.mb-title-before {
+	margin: auto 0 auto auto;
 }

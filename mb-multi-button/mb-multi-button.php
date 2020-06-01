@@ -45,6 +45,23 @@ class MBMultiButton extends FLBuilderModule {
 			)
 		);
 	}
+
+	/**
+	 * Summary. Function checks the color type.
+	 *
+	 * Description This function checks the color type and returns a correct output.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $color_value holds the value of color.
+	 */
+	public function get_color( $color_value ) {
+		if ( strpos( $color_value, 'rgb' ) !== false ) {
+			return $color_value;
+		} else {
+			return '#' . $color_value;
+		}
+	}
 }
 
 /**
@@ -59,7 +76,7 @@ FLBuilder::register_module(
 				'select_button' => array(
 					'title'  => '',
 					'fields' => array(
-						'mb_button_layout_union' => array(
+						'mb_button_layout' => array(
 							'type'    => 'select',
 							'label'   => __( 'Select Layout Type', 'fl-builder' ),
 							'default' => 'row',
@@ -80,7 +97,7 @@ FLBuilder::register_module(
 								),
 							),
 						),
-						'button_list'            => array(
+						'button_list'      => array(
 							'type'     => 'form',
 							'label'    => __( 'Button', 'fl-builder' ),
 							'form'     => 'mb_multi_btn_form',
@@ -96,7 +113,7 @@ FLBuilder::register_module(
 				'button_style_color_uniform' => array(
 					'title'  => 'Color',
 					'fields' => array(
-						'mb_bg_color_uniform'         => array(
+						'mb_common_bg_color'         => array(
 							'type'       => 'color',
 							'label'      => __( 'Background Color', 'fl-builder' ),
 							'default'    => '',
@@ -104,11 +121,11 @@ FLBuilder::register_module(
 							'show_alpha' => true,
 							'preview'    => array(
 								'type'     => 'css',
-								'selector' => '.mb-btn-uniform',
+								'selector' => '.mb-button',
 								'property' => 'background-color',
 							),
 						),
-						'mb_hover_color_uniform'      => array(
+						'mb_common_bg_hover'      => array(
 							'type'       => 'color',
 							'label'      => __( 'Hover Color', 'fl-builder' ),
 							'default'    => '',
@@ -116,11 +133,11 @@ FLBuilder::register_module(
 							'show_alpha' => true,
 							'preview'    => array(
 								'type'     => 'css',
-								'selector' => '.mb-btn-uniform',
+								'selector' => '.mb-button',
 								'property' => 'background-color',
 							),
 						),
-						'mb_text_color_uniform'       => array(
+						'mb_common_text_color'       => array(
 							'type'       => 'color',
 							'label'      => __( 'Text Color', 'fl-builder' ),
 							'default'    => '',
@@ -128,11 +145,11 @@ FLBuilder::register_module(
 							'show_alpha' => false,
 							'preview'    => array(
 								'type'     => 'css',
-								'selector' => '.mb-title-uniform',
+								'selector' => '.mb-title',
 								'property' => 'color',
 							),
 						),
-						'mb_text_hover_color_uniform' => array(
+						'mb_common_text_hover' => array(
 							'type'       => 'color',
 							'label'      => __( 'Hover Text Color', 'fl-builder' ),
 							'default'    => '',
@@ -140,7 +157,7 @@ FLBuilder::register_module(
 							'show_alpha' => false,
 							'preview'    => array(
 								'type'     => 'css',
-								'selector' => '.mb-btn-uniform',
+								'selector' => '.mb-button',
 								'property' => 'color',
 							),
 						),
@@ -149,33 +166,33 @@ FLBuilder::register_module(
 				'sizing_section_uniform'     => array(
 					'title'  => 'Structure',
 					'fields' => array(
-						'mb_btn_width_uniform'    => array(
+						'mb_common_btn_width'    => array(
 							'type'    => 'unit',
 							'label'   => 'Width',
 							'slider'  => true,
 							'default' => '',
 							'units'   => array( 'px' ),
 						),
-						'mb_btn_height_uniform'   => array(
+						'mb_common_btn_height'   => array(
 							'type'    => 'unit',
 							'label'   => 'Height',
 							'slider'  => true,
 							'default' => '',
 							'units'   => array( 'px' ),
 						),
-						'mb_icon_size_uniform'    => array(
+						'mb_common_icon_size'    => array(
 							'type'   => 'unit',
 							'label'  => 'Icon Size',
 							'slider' => true,
 							'units'  => array( 'px' ),
 						),
-						'mb_icon_spacing_uniform' => array(
+						'mb_common_icon_space' => array(
 							'type'   => 'unit',
 							'label'  => 'Icon Space from Text',
 							'slider' => true,
 							'units'  => array( 'px' ),
 						),
-						'mb_btn_padding_uniform'  => array(
+						'mb_common_padding'  => array(
 							'type'   => 'dimension',
 							'label'  => 'Button Padding',
 							'slider' => true,
@@ -186,16 +203,16 @@ FLBuilder::register_module(
 				'border_section_uniform'     => array(
 					'title'  => 'Border',
 					'fields' => array(
-						'mb_button_border_uniform'       => array(
+						'mb_common_border'       => array(
 							'type'       => 'border',
 							'label'      => 'Border',
 							'responsive' => true,
 							'preview'    => array(
 								'type'     => 'css',
-								'selector' => '.mb-btn-uniform',
+								'selector' => '.mb-button',
 							),
 						),
-						'mb_image_border_radius_uniform' => array(
+						'mb_common_image_border' => array(
 							'type'   => 'unit',
 							'label'  => 'Image Border Radius',
 							'slider' => true,
@@ -206,13 +223,13 @@ FLBuilder::register_module(
 				'typo_section_uniform'       => array(
 					'title'  => 'Typography',
 					'fields' => array(
-						'mb_title_typography_uniform' => array(
+						'mb_common_typography' => array(
 							'type'       => 'typography',
 							'label'      => 'Title Typography',
 							'responsive' => true,
 							'preview'    => array(
 								'type'     => 'css',
-								'selector' => '.mb-title-uniform',
+								'selector' => '.mb-title',
 							),
 						),
 					),
@@ -227,7 +244,7 @@ FLBuilder::register_module(
 							'units'   => array( 'px' ),
 							'preview' => array(
 								'type'     => 'css',
-								'selector' => '.mb-btn-container',
+								'selector' => '.mb-button',
 								'property' => 'margin-right',
 							),
 						),
@@ -238,7 +255,7 @@ FLBuilder::register_module(
 							'units'   => array( 'px' ),
 							'preview' => array(
 								'type'     => 'css',
-								'selector' => '.mb-btn-container',
+								'selector' => '.mb-button',
 								'property' => 'margin-bottom',
 							),
 						),
@@ -248,7 +265,7 @@ FLBuilder::register_module(
 							'default' => 'left',
 							'preview' => array(
 								'type'     => 'css',
-								'selector' => '.mb-btn-group-column',
+								'selector' => '.mb-buttons',
 								'property' => 'align-items',
 							),
 						),
@@ -282,7 +299,7 @@ FLBuilder::register_module(
 									'show_target'   => true,
 									'show_nofollow' => true,
 								),
-								'mb_btn_type'      => array(
+								'mb_icon_type'     => array(
 									'type'    => 'select',
 									'label'   => __( 'Button Icon', 'fl-builder' ),
 									'default' => 'none',
@@ -358,7 +375,7 @@ FLBuilder::register_module(
 									'show_alpha' => true,
 									'preview'    => array(
 										'type'     => 'css',
-										'selector' => '.mb-each-btn',
+										'selector' => '.mb-button',
 										'property' => 'background-color',
 									),
 								),
@@ -370,7 +387,7 @@ FLBuilder::register_module(
 									'show_alpha' => true,
 									'preview'    => array(
 										'type'     => 'css',
-										'selector' => '.mb-each-btn',
+										'selector' => '.mb-button',
 										'property' => 'background-color',
 									),
 								),
@@ -382,7 +399,7 @@ FLBuilder::register_module(
 									'show_alpha' => false,
 									'preview'    => array(
 										'type'     => 'css',
-										'selector' => '.mb-each-btn',
+										'selector' => '.mb-button',
 										'property' => 'color',
 									),
 								),
@@ -394,7 +411,7 @@ FLBuilder::register_module(
 									'show_alpha' => false,
 									'preview'    => array(
 										'type'     => 'css',
-										'selector' => '.mb-each-btn',
+										'selector' => '.mb-button',
 										'property' => 'color',
 									),
 								),
@@ -406,7 +423,7 @@ FLBuilder::register_module(
 									'show_alpha' => false,
 									'preview'    => array(
 										'type'     => 'css',
-										'selector' => '.mb-each-btn',
+										'selector' => '.mb-button',
 										'property' => 'color',
 									),
 								),
@@ -418,7 +435,7 @@ FLBuilder::register_module(
 									'show_alpha' => false,
 									'preview'    => array(
 										'type'     => 'css',
-										'selector' => '.mb-each-btn',
+										'selector' => '.mb-button',
 										'property' => 'color',
 									),
 								),
@@ -482,7 +499,7 @@ FLBuilder::register_module(
 									'responsive' => true,
 									'preview'    => array(
 										'type'     => 'css',
-										'selector' => '.mb-btn-preset',
+										'selector' => '.mb-button',
 									),
 								),
 								'mb_image_border_radius' => array(
@@ -502,7 +519,7 @@ FLBuilder::register_module(
 									'responsive' => true,
 									'preview'    => array(
 										'type'     => 'css',
-										'selector' => '.mb-title-preset',
+										'selector' => '.mb-title',
 									),
 								),
 							),
