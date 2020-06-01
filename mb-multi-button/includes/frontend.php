@@ -59,9 +59,12 @@ if ( is_array( $buttons ) && '' !== ( $buttons ) ) {
 			$image_classes[] = 'mb-icon-after';
 			$title_classes[] = 'mb-title-before';
 		}
+
+		$nofollow = isset( $button->btn_link_nofollow ) && 'yes' === $button->btn_link_nofollow ? ' rel="nofollow"' : '';
+		$target   = isset( $button->btn_link_target ) ? ' target="' . $button->btn_link_target . '"' : '';
 		?>
 
-		<a class="mb-button-<?php echo $index; ?> mb-button" href="<?php echo $button->btn_link; ?>">
+		<a class="mb-button-<?php echo $index; ?> mb-button" href="<?php echo $button->btn_link; ?>" <?php echo $target; ?><?php echo $nofollow; ?>>
 		<?php
 		if ( 'icon' === ( $button->mb_icon_type ) ) {
 			?>
