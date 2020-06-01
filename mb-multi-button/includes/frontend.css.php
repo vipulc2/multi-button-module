@@ -21,7 +21,7 @@ $buttons = $settings->button_list;
 	.fl-node-<?php echo $id; ?> .mb-button {
 
 		<?php
-		if ( isset( $settings->mb_common_bg_color ) && ! empty( $settings->mb_common_bg_color ) ) { 
+		if ( isset( $settings->mb_common_bg_color ) && ! empty( $settings->mb_common_bg_color ) ) {
 			?>
 			background-color: <?php echo $module->get_color( $settings->mb_common_bg_color ); ?>;
 		<?php } ?>
@@ -41,7 +41,7 @@ $buttons = $settings->button_list;
 
 	.fl-node-<?php echo $id; ?> .mb-button:hover {
 		<?php
-		if ( isset( $settings->mb_common_bg_hover ) && ! empty( $settings->mb_common_bg_hover ) ) { 
+		if ( isset( $settings->mb_common_bg_hover ) && ! empty( $settings->mb_common_bg_hover ) ) {
 			?>
 			background-color: <?php echo $module->get_color( $settings->mb_common_bg_hover ); ?>;
 			<?php
@@ -153,7 +153,7 @@ if ( is_array( $buttons ) && '' !== ( $buttons ) ) {
 
 	.fl-node-<?php echo $id; ?> .mb-button-<?php echo $index; ?>:hover {
 		<?php
-		if ( isset( $buttons[ $index ]->mb_hover_color ) && ! empty( $buttons[ $index ]->mb_hover_color ) ) { 
+		if ( isset( $buttons[ $index ]->mb_hover_color ) && ! empty( $buttons[ $index ]->mb_hover_color ) ) {
 			?>
 			background-color: <?php echo $module->get_color( $buttons[ $index ]->mb_hover_color ); ?>;
 

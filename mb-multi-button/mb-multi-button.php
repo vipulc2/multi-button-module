@@ -113,7 +113,7 @@ FLBuilder::register_module(
 				'button_style_color_uniform' => array(
 					'title'  => 'Color',
 					'fields' => array(
-						'mb_common_bg_color'         => array(
+						'mb_common_bg_color'   => array(
 							'type'       => 'color',
 							'label'      => __( 'Background Color', 'fl-builder' ),
 							'default'    => '',
@@ -125,7 +125,7 @@ FLBuilder::register_module(
 								'property' => 'background-color',
 							),
 						),
-						'mb_common_bg_hover'      => array(
+						'mb_common_bg_hover'   => array(
 							'type'       => 'color',
 							'label'      => __( 'Hover Color', 'fl-builder' ),
 							'default'    => '',
@@ -137,7 +137,7 @@ FLBuilder::register_module(
 								'property' => 'background-color',
 							),
 						),
-						'mb_common_text_color'       => array(
+						'mb_common_text_color' => array(
 							'type'       => 'color',
 							'label'      => __( 'Text Color', 'fl-builder' ),
 							'default'    => '',
@@ -166,21 +166,21 @@ FLBuilder::register_module(
 				'sizing_section_uniform'     => array(
 					'title'  => 'Structure',
 					'fields' => array(
-						'mb_common_btn_width'    => array(
+						'mb_common_btn_width'  => array(
 							'type'    => 'unit',
 							'label'   => 'Width',
 							'slider'  => true,
 							'default' => '',
 							'units'   => array( 'px' ),
 						),
-						'mb_common_btn_height'   => array(
+						'mb_common_btn_height' => array(
 							'type'    => 'unit',
 							'label'   => 'Height',
 							'slider'  => true,
 							'default' => '',
 							'units'   => array( 'px' ),
 						),
-						'mb_common_icon_size'    => array(
+						'mb_common_icon_size'  => array(
 							'type'   => 'unit',
 							'label'  => 'Icon Size',
 							'slider' => true,
@@ -192,7 +192,7 @@ FLBuilder::register_module(
 							'slider' => true,
 							'units'  => array( 'px' ),
 						),
-						'mb_common_padding'  => array(
+						'mb_common_padding'    => array(
 							'type'   => 'dimension',
 							'label'  => 'Button Padding',
 							'slider' => true,
