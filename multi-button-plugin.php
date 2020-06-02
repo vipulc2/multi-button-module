@@ -5,6 +5,7 @@
  * Version: 1.0
  * Author: V
  * Author URI: http://www.mywebsite.com
+ * Text Domain: multi-button-plugin
  *
  * @package Beaver Module.
  */

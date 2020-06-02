@@ -32,10 +32,10 @@ class MBMultiButton extends FLBuilderModule {
 	public function __construct() {
 		parent::__construct(
 			array(
-				'name'            => __( 'Multiple Buttons Module', 'fl-builder' ),
-				'description'     => __( 'Multiple Button Module', 'fl-builder' ),
-				'group'           => __( 'Buttons', 'fl-builder' ),
-				'category'        => __( 'Buttons', 'fl-builder' ),
+				'name'            => __( 'Multiple Buttons Module', 'multi-button-plugin' ),
+				'description'     => __( 'Multiple Button Module', 'multi-button-plugin' ),
+				'group'           => __( 'Buttons', 'multi-button-plugin' ),
+				'category'        => __( 'Buttons', 'multi-button-plugin' ),
 				'dir'             => MULTI_BUTTON_DIR . 'mb-multi-button/',
 				'url'             => MULTI_BUTTON_URL . 'mb-multi-button/',
 				'icon'            => 'button.svg',
@@ -71,18 +71,18 @@ FLBuilder::register_module(
 	'MBMultiButton',
 	array(
 		'button_content_tab' => array(
-			'title'    => __( 'Content', 'fl-builder' ), // Name of First Tab.
+			'title'    => __( 'Content', 'multi-button-plugin' ), // Name of First Tab.
 			'sections' => array(
 				'select_button' => array(
 					'title'  => '',
 					'fields' => array(
 						'mb_button_layout' => array(
 							'type'    => 'select',
-							'label'   => __( 'Select Layout Type', 'fl-builder' ),
+							'label'   => __( 'Select Layout Type', 'multi-button-plugin' ),
 							'default' => 'row',
 							'options' => array(
-								'row'    => __( 'Horizontal', 'fl-builder' ),
-								'column' => __( 'Vertical', 'fl-builder' ),
+								'row'    => __( 'Horizontal', 'multi-button-plugin' ),
+								'column' => __( 'Vertical', 'multi-button-plugin' ),
 							),
 							'toggle'  => array(
 								'row'    => array(
@@ -99,7 +99,7 @@ FLBuilder::register_module(
 						),
 						'button_list'      => array(
 							'type'     => 'form',
-							'label'    => __( 'Button', 'fl-builder' ),
+							'label'    => __( 'Button', 'multi-button-plugin' ),
 							'form'     => 'mb_multi_btn_form',
 							'multiple' => true,
 						),
@@ -108,14 +108,14 @@ FLBuilder::register_module(
 			),
 		),
 		'button_style_tab'   => array(
-			'title'    => __( 'Style', 'fl-builder' ), // Name of Second Tab.
+			'title'    => __( 'Style', 'multi-button-plugin' ), // Name of Second Tab.
 			'sections' => array(
 				'button_style_color_uniform' => array(
 					'title'  => 'Color',
 					'fields' => array(
 						'mb_common_bg_color'   => array(
 							'type'       => 'color',
-							'label'      => __( 'Background Color', 'fl-builder' ),
+							'label'      => __( 'Background Color', 'multi-button-plugin' ),
 							'default'    => '',
 							'show_reset' => true,
 							'show_alpha' => true,
@@ -127,7 +127,7 @@ FLBuilder::register_module(
 						),
 						'mb_common_bg_hover'   => array(
 							'type'       => 'color',
-							'label'      => __( 'Hover Color', 'fl-builder' ),
+							'label'      => __( 'Hover Color', 'multi-button-plugin' ),
 							'default'    => '',
 							'show_reset' => true,
 							'show_alpha' => true,
@@ -139,7 +139,7 @@ FLBuilder::register_module(
 						),
 						'mb_common_text_color' => array(
 							'type'       => 'color',
-							'label'      => __( 'Text Color', 'fl-builder' ),
+							'label'      => __( 'Text Color', 'multi-button-plugin' ),
 							'default'    => '',
 							'show_reset' => true,
 							'show_alpha' => false,
@@ -151,7 +151,7 @@ FLBuilder::register_module(
 						),
 						'mb_common_text_hover' => array(
 							'type'       => 'color',
-							'label'      => __( 'Hover Text Color', 'fl-builder' ),
+							'label'      => __( 'Hover Text Color', 'multi-button-plugin' ),
 							'default'    => '',
 							'show_reset' => true,
 							'show_alpha' => false,
@@ -168,33 +168,33 @@ FLBuilder::register_module(
 					'fields' => array(
 						'mb_common_btn_width'  => array(
 							'type'    => 'unit',
-							'label'   => 'Width',
+							'label'   => __( 'Width', 'multi-button-plugin' ),
 							'slider'  => true,
 							'default' => '',
 							'units'   => array( 'px' ),
 						),
 						'mb_common_btn_height' => array(
 							'type'    => 'unit',
-							'label'   => 'Height',
+							'label'   => __( 'Height', 'multi-button-plugin' ),
 							'slider'  => true,
 							'default' => '',
 							'units'   => array( 'px' ),
 						),
 						'mb_common_icon_size'  => array(
 							'type'   => 'unit',
-							'label'  => 'Icon Size',
+							'label'  => __( 'Icon Size', 'multi-button-plugin' ),
 							'slider' => true,
 							'units'  => array( 'px' ),
 						),
 						'mb_common_icon_space' => array(
 							'type'   => 'unit',
-							'label'  => 'Icon Space from Text',
+							'label'  => __( 'Icon Space from Text', 'multi-button-plugin' ),
 							'slider' => true,
 							'units'  => array( 'px' ),
 						),
 						'mb_common_padding'    => array(
 							'type'   => 'dimension',
-							'label'  => 'Button Padding',
+							'label'  => __( 'Button Padding', 'multi-button-plugin' ),
 							'slider' => true,
 							'units'  => array( 'px' ),
 						),
@@ -205,7 +205,7 @@ FLBuilder::register_module(
 					'fields' => array(
 						'mb_common_border'       => array(
 							'type'       => 'border',
-							'label'      => 'Border',
+							'label'      => __( 'Border', 'multi-button-plugin' ),
 							'responsive' => true,
 							'preview'    => array(
 								'type'     => 'css',
@@ -214,7 +214,7 @@ FLBuilder::register_module(
 						),
 						'mb_common_image_border' => array(
 							'type'   => 'unit',
-							'label'  => 'Image Border Radius',
+							'label'  => __( 'Image Border Radius', 'multi-button-plugin' ),
 							'slider' => true,
 							'units'  => array( 'px' ),
 						),
@@ -225,7 +225,7 @@ FLBuilder::register_module(
 					'fields' => array(
 						'mb_common_typography' => array(
 							'type'       => 'typography',
-							'label'      => 'Title Typography',
+							'label'      => __( 'Title Typography', 'multi-button-plugin' ),
 							'responsive' => true,
 							'preview'    => array(
 								'type'     => 'css',
@@ -239,13 +239,13 @@ FLBuilder::register_module(
 					'fields' => array(
 						'space_between_buttons' => array(
 							'type'   => 'unit',
-							'label'  => 'Spacing Between Buttons',
+							'label'  => __( 'Spacing Between Buttons', 'multi-button-plugin' ),
 							'slider' => true,
 							'units'  => array( 'px' ),
 						),
 						'mb_btn_alignment'      => array(
 							'type'    => 'align',
-							'label'   => 'Button Align',
+							'label'   => __( 'Button Align', 'multi-button-plugin' ),
 							'default' => 'left',
 							'preview' => array(
 								'type'     => 'css',
@@ -263,10 +263,10 @@ FLBuilder::register_module(
 	FLBuilder::register_settings_form(
 		'mb_multi_btn_form',
 		array(
-			'title' => __( 'Content', 'fl-builder' ),
+			'title' => __( 'Content', 'multi-button-plugin' ),
 			'tabs'  => array(
 				'general'     => array(
-					'title'    => __( 'Content', 'fl-builder' ),
+					'title'    => __( 'Content', 'multi-button-plugin' ),
 					'sections' => array(
 						'general' => array(
 							'title'  => '',
@@ -274,23 +274,23 @@ FLBuilder::register_module(
 								'btn_title'        => array(
 									'type'    => 'text',
 									'default' => 'Button',
-									'label'   => __( 'Title', 'fl-builder' ),
+									'label'   => __( 'Title', 'multi-button-plugin' ),
 								),
 								'btn_link'         => array(
 									'type'          => 'link',
 									'default'       => '#',
-									'label'         => __( 'Link', 'fl-builder' ),
+									'label'         => __( 'Link', 'multi-button-plugin' ),
 									'show_target'   => true,
 									'show_nofollow' => true,
 								),
 								'mb_icon_type'     => array(
 									'type'    => 'select',
-									'label'   => __( 'Button Icon', 'fl-builder' ),
+									'label'   => __( 'Button Icon', 'multi-button-plugin' ),
 									'default' => 'none',
 									'options' => array(
-										'none'  => __( 'None', 'fl-builder' ),
-										'icon'  => __( 'Icon', 'fl-builder' ),
-										'image' => __( 'Image', 'fl-builder' ),
+										'none'  => __( 'None', 'multi-button-plugin' ),
+										'icon'  => __( 'Icon', 'multi-button-plugin' ),
+										'image' => __( 'Image', 'multi-button-plugin' ),
 									),
 									'toggle'  => array(
 										'none'  => array(
@@ -312,21 +312,21 @@ FLBuilder::register_module(
 								),
 								'mb_icon_field'    => array(
 									'type'        => 'icon',
-									'label'       => __( 'Icon Field', 'fl-builder' ),
+									'label'       => __( 'Icon Field', 'multi-button-plugin' ),
 									'show_remove' => true,
 								),
 								'mb_image_field'   => array(
 									'type'        => 'photo',
-									'label'       => __( 'Photo Field', 'fl-builder' ),
+									'label'       => __( 'Photo Field', 'multi-button-plugin' ),
 									'show_remove' => true,
 								),
 								'mb_icon_position' => array(
 									'type'    => 'select',
-									'label'   => __( 'Icon Position', 'fl-builder' ),
+									'label'   => __( 'Icon Position', 'multi-button-plugin' ),
 									'default' => 'before',
 									'options' => array(
-										'before' => __( 'Before', 'fl-builder' ),
-										'after'  => __( 'After', 'fl-builder' ),
+										'before' => __( 'Before', 'multi-button-plugin' ),
+										'after'  => __( 'After', 'multi-button-plugin' ),
 									),
 									'toggle'  => array(
 										'before' => array(
@@ -346,14 +346,14 @@ FLBuilder::register_module(
 					),
 				),
 				'btn_styling' => array(
-					'title'    => __( 'Style', 'fl-builder' ),
+					'title'    => __( 'Style', 'multi-button-plugin' ),
 					'sections' => array(
 						'style_section'  => array(
 							'title'  => '',
 							'fields' => array(
 								'mb_color_field'      => array(
 									'type'       => 'color',
-									'label'      => __( 'Background Color', 'fl-builder' ),
+									'label'      => __( 'Background Color', 'multi-button-plugin' ),
 									'default'    => '',
 									'show_reset' => true,
 									'show_alpha' => true,
@@ -365,7 +365,7 @@ FLBuilder::register_module(
 								),
 								'mb_hover_color'      => array(
 									'type'       => 'color',
-									'label'      => __( 'Hover Color', 'fl-builder' ),
+									'label'      => __( 'Hover Color', 'multi-button-plugin' ),
 									'default'    => '',
 									'show_reset' => true,
 									'show_alpha' => true,
@@ -377,7 +377,7 @@ FLBuilder::register_module(
 								),
 								'mb_text_color'       => array(
 									'type'       => 'color',
-									'label'      => __( 'Text Color', 'fl-builder' ),
+									'label'      => __( 'Text Color', 'multi-button-plugin' ),
 									'default'    => '',
 									'show_reset' => true,
 									'show_alpha' => false,
@@ -389,7 +389,7 @@ FLBuilder::register_module(
 								),
 								'mb_text_hover_color' => array(
 									'type'       => 'color',
-									'label'      => __( 'Hover Text Color', 'fl-builder' ),
+									'label'      => __( 'Hover Text Color', 'multi-button-plugin' ),
 									'default'    => '',
 									'show_reset' => true,
 									'show_alpha' => false,
@@ -401,7 +401,7 @@ FLBuilder::register_module(
 								),
 								'mb_icon_color'       => array(
 									'type'       => 'color',
-									'label'      => __( 'Icon Color', 'fl-builder' ),
+									'label'      => __( 'Icon Color', 'multi-button-plugin' ),
 									'default'    => '',
 									'show_reset' => true,
 									'show_alpha' => false,
@@ -413,7 +413,7 @@ FLBuilder::register_module(
 								),
 								'mb_icon_hover_color' => array(
 									'type'       => 'color',
-									'label'      => __( 'Icon Hover Color', 'fl-builder' ),
+									'label'      => __( 'Icon Hover Color', 'multi-button-plugin' ),
 									'default'    => '',
 									'show_reset' => true,
 									'show_alpha' => false,
@@ -430,45 +430,45 @@ FLBuilder::register_module(
 							'fields' => array(
 								'mb_btn_width'     => array(
 									'type'    => 'unit',
-									'label'   => 'Width',
+									'label'   => __( 'Width', 'multi-button-plugin' ),
 									'slider'  => true,
 									'default' => '',
 									'units'   => array( 'px' ),
 								),
 								'mb_btn_height'    => array(
 									'type'    => 'unit',
-									'label'   => 'Height',
+									'label'   => __( 'Height', 'multi-button-plugin' ),
 									'slider'  => true,
 									'default' => '',
 									'units'   => array( 'px' ),
 								),
 								'mb_icon_size'     => array(
 									'type'   => 'unit',
-									'label'  => 'Icon Size',
+									'label'  => __( 'Icon Size', 'multi-button-plugin' ),
 									'slider' => true,
 									'units'  => array( 'px' ),
 								),
 								'mb_icon_spacing'  => array(
 									'type'   => 'unit',
-									'label'  => 'Icon Spacing',
+									'label'  => __( 'Icon Spacing', 'multi-button-plugin' ),
 									'slider' => true,
 									'units'  => array( 'px' ),
 								),
 								'mb_image_size'    => array(
 									'type'   => 'unit',
-									'label'  => 'Image Size',
+									'label'  => __( 'Image Size', 'multi-button-plugin' ),
 									'slider' => true,
 									'units'  => array( 'px' ),
 								),
 								'mb_image_spacing' => array(
 									'type'   => 'unit',
-									'label'  => 'Image Spacing',
+									'label'  => __( 'Image Spacing', 'multi-button-plugin' ),
 									'slider' => true,
 									'units'  => array( 'px' ),
 								),
 								'mb_btn_padding'   => array(
 									'type'   => 'dimension',
-									'label'  => 'Button Padding',
+									'label'  => __( 'Button Padding', 'multi-button-plugin' ),
 									'slider' => true,
 									'units'  => array( 'px' ),
 								),
@@ -479,7 +479,7 @@ FLBuilder::register_module(
 							'fields' => array(
 								'mb_button_border'       => array(
 									'type'       => 'border',
-									'label'      => 'Border',
+									'label'      => __( 'Border', 'multi-button-plugin' ),
 									'responsive' => true,
 									'preview'    => array(
 										'type'     => 'css',
@@ -488,7 +488,7 @@ FLBuilder::register_module(
 								),
 								'mb_image_border_radius' => array(
 									'type'   => 'unit',
-									'label'  => 'Image Border Radius',
+									'label'  => __( 'Image Border Radius', 'multi-button-plugin' ),
 									'slider' => true,
 									'units'  => array( 'px' ),
 								),
@@ -499,7 +499,7 @@ FLBuilder::register_module(
 							'fields' => array(
 								'mb_title_typography' => array(
 									'type'       => 'typography',
-									'label'      => 'Title Typography',
+									'label'      => __( 'Title Typography', 'multi-button-plugin' ),
 									'responsive' => true,
 									'preview'    => array(
 										'type'     => 'css',

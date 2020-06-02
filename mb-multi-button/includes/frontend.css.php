@@ -298,7 +298,6 @@ if ( is_array( $buttons ) && '' !== ( $buttons ) ) {
 			justify-content: flex-end;
 		<?php
 	}
-
 	if ( isset( $settings->mb_btn_alignment ) && 'center' === ( $settings->mb_btn_alignment ) ) {
 		?>
 			justify-content: center;
