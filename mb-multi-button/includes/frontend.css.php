@@ -292,55 +292,45 @@ if ( is_array( $buttons ) && '' !== ( $buttons ) ) {
 	<?php if ( isset( $settings->mb_btn_alignment ) && 'left' === ( $settings->mb_btn_alignment ) ) { ?>
 			justify-content: flex-start;
 		<?php
-
 	}
 	if ( isset( $settings->mb_btn_alignment ) && 'right' === ( $settings->mb_btn_alignment ) ) {
 		?>
 			justify-content: flex-end;
 		<?php
-
 	}
 
 	if ( isset( $settings->mb_btn_alignment ) && 'center' === ( $settings->mb_btn_alignment ) ) {
 		?>
 			justify-content: center;
 		<?php
-
 	}
 	?>
-
 }
 
 .fl-node-<?php echo $id; ?> .mb-layout-column {
 	<?php if ( isset( $settings->mb_btn_alignment ) && 'left' === ( $settings->mb_btn_alignment ) ) { ?>
 		align-items: flex-start;
 		<?php
-
 	}
 	if ( isset( $settings->mb_btn_alignment ) && 'right' === ( $settings->mb_btn_alignment ) ) {
 		?>
 			align-items: flex-end;
 		<?php
-
 	}
-
 	if ( isset( $settings->mb_btn_alignment ) && 'center' === ( $settings->mb_btn_alignment ) ) {
 		?>
 			align-items: center;
 		<?php
-
 	}
 	?>
-
 }
 
-.fl-node-<?php echo $id; ?> .mb-button {
-	<?php if ( isset( $settings->horizontal_spacing_between_button ) && '' !== ( $settings->horizontal_spacing_between_button ) && 'row' === ( $settings->mb_button_layout ) ) { ?>
-	margin-right: <?php echo $settings->horizontal_spacing_between_button; ?>px;
+.fl-node-<?php echo $id; ?>  .mb-button {
+	<?php if ( isset( $settings->space_between_buttons ) && '' !== ( $settings->space_between_buttons ) && 'row' === ( $settings->mb_button_layout ) ) { ?>
+	margin-right: <?php echo $settings->space_between_buttons; ?>px;
 <?php } ?>
-
-	<?php if ( isset( $settings->vertical_spacing_between_button ) && '' !== ( $settings->vertical_spacing_between_button ) && 'column' === ( $settings->mb_button_layout ) ) { ?>
-	margin-bottom: <?php echo $settings->vertical_spacing_between_button; ?>px;
+	<?php if ( isset( $settings->space_between_buttons ) && '' !== ( $settings->space_between_buttons ) && 'column' === ( $settings->mb_button_layout ) ) { ?>
+	margin-bottom: <?php echo $settings->space_between_buttons; ?>px;
 <?php } ?>
 
 }

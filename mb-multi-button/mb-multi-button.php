@@ -86,12 +86,12 @@ FLBuilder::register_module(
 							),
 							'toggle'  => array(
 								'row'    => array(
-									'fields'   => array( 'horizontal_spacing_between_button' ),
+									'fields'   => array(),
 									'sections' => array(),
 									'tabs'     => array(),
 								),
 								'column' => array(
-									'fields'   => array( 'vertical_spacing_between_button' ),
+									'fields'   => array(),
 									'sections' => array(),
 									'tabs'     => array(),
 								),
@@ -237,29 +237,13 @@ FLBuilder::register_module(
 				'spacing_of_button_uniform'  => array(
 					'title'  => 'Spacing & Alignment',
 					'fields' => array(
-						'horizontal_spacing_between_button' => array(
-							'type'    => 'unit',
-							'label'   => 'Spacing Between Buttons',
-							'slider'  => true,
-							'units'   => array( 'px' ),
-							'preview' => array(
-								'type'     => 'css',
-								'selector' => '.mb-button',
-								'property' => 'margin-right',
-							),
+						'space_between_buttons' => array(
+							'type'   => 'unit',
+							'label'  => 'Spacing Between Buttons',
+							'slider' => true,
+							'units'  => array( 'px' ),
 						),
-						'vertical_spacing_between_button' => array(
-							'type'    => 'unit',
-							'label'   => 'Spacing Between Buttons',
-							'slider'  => true,
-							'units'   => array( 'px' ),
-							'preview' => array(
-								'type'     => 'css',
-								'selector' => '.mb-button',
-								'property' => 'margin-bottom',
-							),
-						),
-						'mb_btn_alignment'                => array(
+						'mb_btn_alignment'      => array(
 							'type'    => 'align',
 							'label'   => 'Button Align',
 							'default' => 'left',
