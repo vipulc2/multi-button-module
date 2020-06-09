@@ -28,6 +28,7 @@ define( 'MULTI_BUTTON_URL', plugins_url( '/', __FILE__ ) );
 function load_multi_button_module() {
 	if ( class_exists( 'FLBuilder' ) ) {
 		require_once 'mb-multi-button/mb-multi-button.php';
+		require_once 'tc-table-content/tc-table-content.php';
 	}
 }
 add_action( 'init', 'load_multi_button_module' );

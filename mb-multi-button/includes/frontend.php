@@ -55,7 +55,7 @@ if ( is_array( $buttons ) && '' !== ( $buttons ) ) {
 		}
 		if ( 'image' === ( $button->mb_icon_type ) ) {
 			?>
-			<img class="mb-image" src="<?php echo $button->mb_image_field_src; ?>">
+			<img class="mb-image" src="<?php echo esc_html( $button->mb_image_field_src ); ?>">
 		<?php } ?>
 		<span class="mb-title"><?php echo $button->btn_title; ?></span>
 		</a>
