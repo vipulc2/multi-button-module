@@ -1,38 +1,109 @@
+/* ------------------------------------- */
+/* Container */
+/* ------------------------------------- */
+
 .tc-container {
-	max-width: 100%;
+	width: auto;
 	height: auto;
 }
 
+/* ------------------------------------- */
+/* Header Section*/
+/* ------------------------------------- */
 .tc-header {
 	display: flex;
 	width: 100%;
 	background-color: #555;
-	justify-content:space-between;
 	align-items:center;
-	padding: 5px;
+	cursor: pointer;
 }
 
-.header-title {
+/* Header Title */
+.tc-header-title {
+	flex: 10;
+	text-align: left;
 	font-size: 26px;
 	color: white;
 }
 
+/* Header Icon when collapsed */
 .header-icon-collapse {
 	display: none;
 	font-size: 22px;
 }
 
+/* Header Icon when expanded */
 .header-icon-expand {
 	display: none;
 	font-size: 22px;
 }
 
+/*--------- CSS for toggle show of icons (Active stage for Icons) -----------*/
 .active {
-	display: inline-flex;
+	text-align: right;
+	display: inline-block;
 }
 
+/* ------------------------------------- */
+/* Body Section*/
+/* ------------------------------------- */
 .tc-body {
 	display: block;
-	height: 200px;
+	height: auto;
 	background-color: #ccc;
+	color: #000;
+
+}
+
+/* The UL or OL element's ID */
+#tc-list-wrapper {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+/* ------------------------------------- */
+/* Sticky TOC Section*/
+/* ------------------------------------- */
+.tc-sticky-fixed {
+	position: fixed;
+	left: 10%;
+	bottom: 200px;
+	width: 80%;
+	opacity: .8;
+}
+
+/* Sticky Custom Position */
+.tc-sticky-custom {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 60%;
+	opacity: .8;
+}
+
+/* ------------------------------------- */
+/* Scroll To Top Section*/
+/* ------------------------------------- */
+.tc-scroll-top-container {
+	display: flex;
+	height: auto;
+	width: auto;
+	padding: 25px;
+	background-color: #ccc;
+	position: fixed;
+	bottom: 10px;
+	z-index: 1000;
+	cursor: pointer;
+}
+
+.tc-scroll-align-left {
+	left: 10px;
+}
+.tc-scroll-align-right {
+	right: 10px;
+}
+
+.tc-scroll-top-icon {
+	font-size: 22px;
+	margin: auto auto auto auto;
 }

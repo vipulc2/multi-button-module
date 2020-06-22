@@ -44,6 +44,8 @@ class TCTableContent extends FLBuilderModule {
 				'partial_refresh' => false, // Defaults to false and can be omitted.
 			)
 		);
+		$this->add_js( 'pptableofcontent', $this->url . 'js/jquery.toc.js', array(), '', true );
+		$this->add_css( 'font-awesome-5' );
 	}
 
 	/**
@@ -128,16 +130,16 @@ FLBuilder::register_module(
 							'options'      => array(
 								'h2' => __( 'H2', 'multi-button-plugin' ),
 								'h3' => __( 'H3', 'multi-button-plugin' ),
-								'h4' => __( 'H3', 'multi-button-plugin' ),
-								'h5' => __( 'H3', 'multi-button-plugin' ),
-								'h6' => __( 'H3', 'multi-button-plugin' ),
+								'h4' => __( 'H4', 'multi-button-plugin' ),
+								'h5' => __( 'H5', 'multi-button-plugin' ),
+								'h6' => __( 'H6', 'multi-button-plugin' ),
 							),
 							'multi-select' => true,
 						),
 						'include_container' => array(
 							'type'    => 'text',
+							'default' => 'body',
 							'label'   => __( 'Container', 'multi-button-plugin' ),
-							'default' => '',
 						),
 					),
 				),
@@ -250,7 +252,7 @@ FLBuilder::register_module(
 				'sticky_toc_section' => array(
 					'title'  => __( 'Sticky TOC', 'multi-button-plugin' ),
 					'fields' => array(
-						'sticky_disable'      => array(
+						'sticky_disable'        => array(
 							'type'         => 'select',
 							'label'        => __( 'Disabled On', 'multi-button-plugin' ),
 							'default'      => 'mobile',
@@ -261,27 +263,29 @@ FLBuilder::register_module(
 							),
 							'multi-select' => true,
 						),
-						'sticky_type'         => array(
+						'sticky_type'           => array(
 							'type'    => 'select',
 							'label'   => __( 'Sticky TOC on Scroll', 'multi-button-plugin' ),
-							'default' => 'yes',
+							'default' => 'fixed',
 							'options' => array(
 								'custom' => __( 'Custom Position', 'multi-button-plugin' ),
 								'fixed'  => __( 'Sticky in Place', 'multi-button-plugin' ),
 							),
 							'toggle'  => array(
-								'yes' => array(
-									'fields'   => array( 'icon_field' ),
-									'sections' => array(),
-									'tabs'     => array(),
+								'custom' => array(
+									'fields' => array( 'horizontal_position', 'vertical_position' ),
+								),
+								'fixed'  => array(
+									'fields' => array( 'fixed_offset_position' ),
 								),
 							),
 						),
-						'horizontal_position' => array(
+						'horizontal_position'   => array(
 							'type'         => 'unit',
 							'label'        => __( 'Horizontal Position', 'multi-button-plugin' ),
 							'units'        => array( 'px', 'vw', '%' ),
 							'slider'       => true,
+							'responsive'   => true,
 							'default_unit' => '%', // Optional.
 							'preview'      => array(
 								'type'     => 'css',
@@ -289,11 +293,25 @@ FLBuilder::register_module(
 								'property' => 'width',
 							),
 						),
-						'vertical_position'   => array(
+						'vertical_position'     => array(
 							'type'         => 'unit',
 							'label'        => __( 'Vertical Position', 'multi-button-plugin' ),
 							'units'        => array( 'px', 'vw', '%' ),
 							'slider'       => true,
+							'responsive'   => true,
+							'default_unit' => '%', // Optional.
+							'preview'      => array(
+								'type'     => 'css',
+								'selector' => '.my-class',
+								'property' => 'width',
+							),
+						),
+						'fixed_offset_position' => array(
+							'type'         => 'unit',
+							'label'        => __( 'Offset Position', 'multi-button-plugin' ),
+							'units'        => array( 'px', 'vw', '%' ),
+							'slider'       => true,
+							'responsive'   => true,
 							'default_unit' => '%', // Optional.
 							'preview'      => array(
 								'type'     => 'css',
@@ -318,6 +336,7 @@ FLBuilder::register_module(
 						'scroll_icon'                => array(
 							'type'        => 'icon',
 							'label'       => __( 'Icon', 'multi-button-plugin' ),
+							'default'     => 'fas fa-arrow-up',
 							'show_remove' => true,
 						),
 						'scroll_alignment'           => array(
@@ -335,11 +354,12 @@ FLBuilder::register_module(
 							'label'        => __( 'Horizontal Position', 'multi-button-plugin' ),
 							'units'        => array( 'px', 'vw', '%' ),
 							'slider'       => true,
+							'responsive'   => true,
 							'default_unit' => '%', // Optional.
 							'preview'      => array(
 								'type'     => 'css',
-								'selector' => '.my-class',
-								'property' => 'width',
+								'selector' => '.tc-scroll-align-left',
+								'property' => 'left',
 							),
 						),
 						'scroll_vertical_position'   => array(
@@ -347,23 +367,23 @@ FLBuilder::register_module(
 							'label'        => __( 'Vertical Position', 'multi-button-plugin' ),
 							'units'        => array( 'px', 'vw', '%' ),
 							'slider'       => true,
+							'responsive'   => true,
 							'default_unit' => '%', // Optional.
 							'preview'      => array(
 								'type'     => 'css',
-								'selector' => '.my-class',
-								'property' => 'width',
+								'selector' => '.tc-scroll-top-container',
+								'property' => 'bottom',
 							),
 						),
 						'scroll_z_index'             => array(
-							'type'         => 'unit',
-							'label'        => __( 'Z-Index', 'multi-button-plugin' ),
-							'units'        => array( 'px', 'vw', '%' ),
-							'slider'       => true,
-							'default_unit' => '%', // Optional.
-							'preview'      => array(
+							'type'    => 'unit',
+							'label'   => __( 'Z-Index', 'multi-button-plugin' ),
+							'units'   => array( 'px' ),
+							'slider'  => true,
+							'preview' => array(
 								'type'     => 'css',
-								'selector' => '.my-class',
-								'property' => 'width',
+								'selector' => '.tc-scroll-top-container',
+								'property' => 'z-index',
 							),
 						),
 					),
@@ -376,14 +396,14 @@ FLBuilder::register_module(
 				'box_section'          => array(
 					'title'  => __( 'Box', 'multi-button-plugin' ),
 					'fields' => array(
-						'box_bg_color'     => array(
+						'box_bg_color'   => array(
 							'type'       => 'color',
 							'label'      => __( 'Background Color', 'multi-button-plugin' ),
 							'default'    => '',
 							'show_reset' => true,
 							'show_alpha' => true,
 						),
-						'box_border'       => array(
+						'box_border'     => array(
 							'type'       => 'border',
 							'label'      => __( 'Border', 'multi-button-plugin' ),
 							'responsive' => true,
@@ -392,19 +412,13 @@ FLBuilder::register_module(
 								'selector' => '.my-selector',
 							),
 						),
-						'box_border_color' => array(
-							'type'       => 'color',
-							'label'      => __( 'Color', 'multi-button-plugin' ),
-							'default'    => '',
-							'show_reset' => true,
-							'show_alpha' => true,
-						),
-						'box_min_height'   => array(
+						'box_min_height' => array(
 							'type'         => 'unit',
 							'label'        => __( 'Min Height', 'multi-button-plugin' ),
 							'units'        => array( 'px', 'vw' ),
 							'slider'       => true,
-							'default_unit' => '%', // Optional.
+							'responsive'   => true,
+							'default_unit' => 'px', // Optional.
 							'preview'      => array(
 								'type'     => 'css',
 								'selector' => '.my-class',
@@ -522,11 +536,12 @@ FLBuilder::register_module(
 							),
 						),
 						'list_indent'           => array(
-							'type'    => 'unit',
-							'label'   => __( 'Indent', 'multi-button-plugin' ),
-							'units'   => array( 'px', 'em' ),
-							'slider'  => true,
-							'preview' => array(
+							'type'       => 'unit',
+							'label'      => __( 'Indent', 'multi-button-plugin' ),
+							'units'      => array( 'px', 'em' ),
+							'slider'     => true,
+							'responsive' => true,
+							'preview'    => array(
 								'type'     => 'css',
 								'selector' => '.my-class',
 								'property' => 'width',
@@ -615,11 +630,12 @@ FLBuilder::register_module(
 							'show_alpha' => false,
 						),
 						'list_marker_size'      => array(
-							'type'    => 'unit',
-							'label'   => __( 'Marker Size', 'multi-button-plugin' ),
-							'units'   => array( 'px', 'em' ),
-							'slider'  => true,
-							'preview' => array(
+							'type'       => 'unit',
+							'label'      => __( 'Marker Size', 'multi-button-plugin' ),
+							'units'      => array( 'px', 'em' ),
+							'slider'     => true,
+							'responsive' => true,
+							'preview'    => array(
 								'type'     => 'css',
 								'selector' => '.my-class',
 								'property' => '',
@@ -635,6 +651,7 @@ FLBuilder::register_module(
 							'label'        => __( 'Width', 'multi-button-plugin' ),
 							'units'        => array( 'px', 'vw', '%' ),
 							'slider'       => true,
+							'responsive'   => true,
 							'default_unit' => '%', // Optional.
 							'preview'      => array(
 								'type'     => 'css',
@@ -646,7 +663,11 @@ FLBuilder::register_module(
 							'type'    => 'unit',
 							'label'   => __( 'Background Opacity', 'multi-button-plugin' ),
 							'units'   => array( 'px' ),
-							'slider'  => true,
+							'slider'  => array(
+								'min'  => 0,
+								'max'  => 1,
+								'step' => .10,
+							),
 							'preview' => array(
 								'type'     => 'css',
 								'selector' => '.my-class',
@@ -669,11 +690,12 @@ FLBuilder::register_module(
 					'title'  => __( 'Scroll to Top', 'multi-button-plugin' ),
 					'fields' => array(
 						'scroll_icon_size'   => array(
-							'type'    => 'unit',
-							'label'   => __( 'Icon Size', 'multi-button-plugin' ),
-							'units'   => array( 'px', 'em' ),
-							'slider'  => true,
-							'preview' => array(
+							'type'       => 'unit',
+							'label'      => __( 'Icon Size', 'multi-button-plugin' ),
+							'units'      => array( 'px', 'em' ),
+							'slider'     => true,
+							'responsive' => true,
+							'preview'    => array(
 								'type'     => 'css',
 								'selector' => '.my-class',
 								'property' => '',
