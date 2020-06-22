@@ -218,7 +218,7 @@ FLBuilder::register_module(
 						'sticky_toc'           => array(
 							'type'    => 'select',
 							'label'   => __( 'Sticky TOC on Scroll', 'multi-button-plugin' ),
-							'default' => 'yes',
+							'default' => 'no',
 							'options' => array(
 								'no'  => __( 'No', 'multi-button-plugin' ),
 								'yes' => __( 'Yes', 'multi-button-plugin' ),
@@ -234,7 +234,7 @@ FLBuilder::register_module(
 						'scroll_top'           => array(
 							'type'    => 'select',
 							'label'   => __( 'Scroll to Top', 'multi-button-plugin' ),
-							'default' => 'yes',
+							'default' => 'no',
 							'options' => array(
 								'no'  => __( 'No', 'multi-button-plugin' ),
 								'yes' => __( 'Yes', 'multi-button-plugin' ),
@@ -266,7 +266,7 @@ FLBuilder::register_module(
 						'sticky_type'           => array(
 							'type'    => 'select',
 							'label'   => __( 'Sticky TOC on Scroll', 'multi-button-plugin' ),
-							'default' => 'fixed',
+							'default' => 'custom',
 							'options' => array(
 								'custom' => __( 'Custom Position', 'multi-button-plugin' ),
 								'fixed'  => __( 'Sticky in Place', 'multi-button-plugin' ),
