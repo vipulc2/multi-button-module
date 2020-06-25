@@ -73,6 +73,41 @@
 	margin-bottom: 0;
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
+#tc-list-wrapper ul {
+	list-style-type: disc;
+}
+
+#tc-list-wrapper ul ul {
+	list-style-type: disc;
+}
+#tc-list-wrapper ul ul ul{
+	list-style-type: disc;
+}
+#tc-list-wrapper ul ul ul ul{
+	list-style-type: disc;
+}
+
+#tc-list-wrapper ol{
+	list-style-type: decimal;
+}
+
+#tc-list-wrapper ol ol{
+	list-style-type: decimal;
+}
+
+#tc-list-wrapper ol ol ol{
+	list-style-type: decimal;
+}
+
+#tc-list-wrapper ol ol ol ol{
+	list-style-type: decimal;
+}
+
+
 /* ------------------------------------- */
 /* Sticky TOC Section*/
 /* ------------------------------------- */

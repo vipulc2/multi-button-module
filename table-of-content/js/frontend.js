@@ -82,7 +82,7 @@
 					$('.fl-node-' + node_id + ' .header-icon-expand').removeClass('active');
 					$('.fl-node-' + node_id + ' .header-icon-collapse').removeClass('active');
 				}
-				
+
 			} else {
 				$('.fl-node-' + node_id + ' .tc-header').css('cursor', 'default');
 				$('.fl-node-' + node_id + ' .header-icon-expand').removeClass('active');
@@ -152,15 +152,19 @@
 				
 				if ( scrollPos >= stickyOffset) {
 					if ( true === isFixed ) {
+						
 						$('.fl-node-' + node_id + ' .tc-container').removeClass('tc-sticky-custom');
 						$('.fl-node-' + node_id + ' .tc-container').addClass('tc-sticky-fixed');
 					} else {
+						
 						$('.fl-node-' + node_id + ' .tc-container').removeClass('tc-sticky-fixed');
 						$('.fl-node-' + node_id + ' .tc-container').addClass('tc-sticky-custom');
 					}
 				} else {
+				
 					$('.fl-node-' + node_id + ' .tc-container').removeClass('tc-sticky-fixed');
 					$('.fl-node-' + node_id + ' .tc-container').removeClass('tc-sticky-custom');
+					
 				}
 
 			});
