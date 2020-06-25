@@ -41,7 +41,7 @@
             headingSelectors = thisOptions.headings.split(",");
 
             // Set up some automatic IDs if we do not already have them
-            $(thisOptions.content).find(thisOptions.headings).attr("id", function (index, attr) {
+            $(thisOptions.content).find(thisOptions.headings).not('.tc-exclude-element').attr("id", function (index, attr) {
                 // In HTML5, the id attribute must be at least one character long and must not
                 // contain any space characters.
                 //

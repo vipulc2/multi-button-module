@@ -18,7 +18,7 @@
  *
  * @since 1.0.0
  */
-class TCTableContent extends FLBuilderModule {
+class ToCModule extends FLBuilderModule {
 
 	/**
 	 * Summary. Function that defines the name, group of module.
@@ -36,8 +36,8 @@ class TCTableContent extends FLBuilderModule {
 				'description'     => __( 'Table of Content', 'multi-button-plugin' ),
 				'group'           => __( 'Table of Content', 'multi-button-plugin' ),
 				'category'        => __( 'Table of Content', 'multi-button-plugin' ),
-				'dir'             => MULTI_BUTTON_DIR . 'tc-table-content/',
-				'url'             => MULTI_BUTTON_URL . 'tc-table-content/',
+				'dir'             => MULTI_BUTTON_DIR . 'table-of-content/',
+				'url'             => MULTI_BUTTON_URL . 'table-of-content/',
 				'icon'            => 'button.svg',
 				'editor_export'   => true, // Defaults to true and can be omitted.
 				'enabled'         => true, // Defaults to true and can be omitted.
@@ -70,7 +70,7 @@ class TCTableContent extends FLBuilderModule {
  * Register the module and its form settings.
  */
 FLBuilder::register_module(
-	'TCTableContent',
+	'ToCModule',
 	array(
 		'content' => array(
 			'title'    => __( 'Content', 'multi-button-plugin' ),
@@ -83,41 +83,41 @@ FLBuilder::register_module(
 							'label'   => __( 'Title', 'multi-button-plugin' ),
 							'default' => '',
 						),
-						'html_tag'      => array(
-							'type'    => 'select',
-							'label'   => __( 'HTML Tag', 'multi-button-plugin' ),
-							'default' => 'h2',
-							'options' => array(
-								'h2'  => __( 'H2', 'multi-button-plugin' ),
-								'h3'  => __( 'H3', 'multi-button-plugin' ),
-								'h4'  => __( 'H3', 'multi-button-plugin' ),
-								'h5'  => __( 'H3', 'multi-button-plugin' ),
-								'h6'  => __( 'H3', 'multi-button-plugin' ),
-								'div' => __( 'Div', 'multi-button-plugin' ),
-							),
-						),
+						// 'html_tag'      => array(
+						// 'type'    => 'select',
+						// 'label'   => __( 'HTML Tag', 'multi-button-plugin' ),
+						// 'default' => 'h2',
+						// 'options' => array(
+						// 'h2'  => __( 'H2', 'multi-button-plugin' ),
+						// 'h3'  => __( 'H3', 'multi-button-plugin' ),
+						// 'h4'  => __( 'H3', 'multi-button-plugin' ),
+						// 'h5'  => __( 'H3', 'multi-button-plugin' ),
+						// 'h6'  => __( 'H3', 'multi-button-plugin' ),
+						// 'div' => __( 'Div', 'multi-button-plugin' ),
+						// ),
+						// ),
 						'list_style'    => array(
 							'type'    => 'select',
 							'label'   => __( 'List Style', 'multi-button-plugin' ),
 							'default' => 'numbers',
 							'options' => array(
-								'none'    => __( 'None', 'multi-button-plugin' ),
+								// 'none'    => __( 'None', 'multi-button-plugin' ),
 								'numbers' => __( 'Numbers', 'multi-button-plugin' ),
 								'bullets' => __( 'Bullets', 'multi-button-plugin' ),
 							),
 							'toggle'  => array(
 								'bullets' => array(
-									'fields'   => array( 'icon_field' ),
+									'fields'   => array( 'marker_field' ),
 									'sections' => array(),
 									'tabs'     => array(),
 								),
 							),
 						),
-						'marker_field'  => array(
-							'type'        => 'icon',
-							'label'       => __( 'Icon', 'multi-button-plugin' ),
-							'show_remove' => true,
-						),
+						// 'marker_field'  => array(
+						// 'type'        => 'icon',
+						// 'label'       => __( 'Icon', 'multi-button-plugin' ),
+						// 'show_remove' => true,
+						// ),
 					),
 				),
 				'include'            => array(
@@ -135,11 +135,13 @@ FLBuilder::register_module(
 								'h6' => __( 'H6', 'multi-button-plugin' ),
 							),
 							'multi-select' => true,
+							'help'         => __( 'Select multiple headings you want to include with Shift + click', 'multi-button-plugin' ),
 						),
 						'include_container' => array(
 							'type'    => 'text',
 							'default' => 'body',
 							'label'   => __( 'Container', 'multi-button-plugin' ),
+							'help'    => __( 'Type in the container you want to include the headings from. Remember to use period(.) before a class and (#) before an ID you want to include from', 'multi-button-plugin' ),
 						),
 					),
 				),
@@ -150,13 +152,14 @@ FLBuilder::register_module(
 							'type'    => 'text',
 							'label'   => __( 'Container', 'multi-button-plugin' ),
 							'default' => '',
+							'help'    => __( 'Use (.) before classname and (#) before ID and seperate multiple elements with a comma(,)', 'multi-button-plugin' ),
 						),
 					),
 				),
 				'additional_options' => array(
 					'title'  => __( 'Additional Options', 'multi-button-plugin' ),
 					'fields' => array(
-						'word_wrap'            => array(
+						'word_wrap'           => array(
 							'type'    => 'select',
 							'label'   => __( 'Word Wrap', 'multi-button-plugin' ),
 							'default' => 'no',
@@ -165,7 +168,7 @@ FLBuilder::register_module(
 								'yes' => __( 'Yes', 'multi-button-plugin' ),
 							),
 						),
-						'collapsable_toc'      => array(
+						'collapsable_toc'     => array(
 							'type'    => 'select',
 							'label'   => __( 'Collapsable TOC', 'multi-button-plugin' ),
 							'default' => 'yes',
@@ -174,30 +177,30 @@ FLBuilder::register_module(
 								'yes' => __( 'Yes', 'multi-button-plugin' ),
 							),
 						),
-						'collapse_icon_field'  => array(
+						'collapse_icon_field' => array(
 							'type'        => 'icon',
 							'label'       => __( 'Collapse Icon', 'multi-button-plugin' ),
 							'default'     => 'fa fa-plus',
 							'show_remove' => true,
 						),
-						'expand_icon_field'    => array(
+						'expand_icon_field'   => array(
 							'type'        => 'icon',
 							'label'       => __( 'Expand Icon', 'multi-button-plugin' ),
 							'default'     => 'fa fa-minus',
 							'show_remove' => true,
 						),
-						'collapse_on'          => array(
+						'collapse_on'         => array(
 							'type'         => 'select',
 							'label'        => __( 'Collapse On', 'multi-button-plugin' ),
-							'default'      => 'mobile',
+							'default'      => 'none',
 							'options'      => array(
-								'mobile'  => __( 'Mobile', 'multi-button-plugin' ),
-								'tablet'  => __( 'Tablet', 'multi-button-plugin' ),
-								'desktop' => __( 'Desktop', 'multi-button-plugin' ),
+								'none'    => __( 'None', 'multi-button-plugin' ),
+								'mobile'  => __( 'Mobile(< 768px)', 'multi-button-plugin' ),
+								'tablet'  => __( 'Tablet(< 1025px)', 'multi-button-plugin' ),
+								'desktop' => __( 'Desktop(< 1600px)', 'multi-button-plugin' ),
 							),
-							'multi-select' => true,
 						),
-						'hierarchical_view'    => array(
+						'hierarchical_view'   => array(
 							'type'    => 'select',
 							'label'   => __( 'Hierarchical View', 'multi-button-plugin' ),
 							'default' => 'yes',
@@ -206,16 +209,16 @@ FLBuilder::register_module(
 								'yes' => __( 'Yes', 'multi-button-plugin' ),
 							),
 						),
-						'collapse_sub_heading' => array(
-							'type'    => 'select',
-							'label'   => __( 'Collapse Sub Headings', 'multi-button-plugin' ),
-							'default' => 'yes',
-							'options' => array(
-								'no'  => __( 'No', 'multi-button-plugin' ),
-								'yes' => __( 'Yes', 'multi-button-plugin' ),
-							),
-						),
-						'sticky_toc'           => array(
+						// 'collapse_sub_heading' => array(
+						// 'type'    => 'select',
+						// 'label'   => __( 'Collapse Sub Headings', 'multi-button-plugin' ),
+						// 'default' => 'yes',
+						// 'options' => array(
+						// 'no'  => __( 'No', 'multi-button-plugin' ),
+						// 'yes' => __( 'Yes', 'multi-button-plugin' ),
+						// ),
+						// ),
+						'sticky_toc'          => array(
 							'type'    => 'select',
 							'label'   => __( 'Sticky TOC on Scroll', 'multi-button-plugin' ),
 							'default' => 'no',
@@ -231,7 +234,7 @@ FLBuilder::register_module(
 								),
 							),
 						),
-						'scroll_top'           => array(
+						'scroll_top'          => array(
 							'type'    => 'select',
 							'label'   => __( 'Scroll to Top', 'multi-button-plugin' ),
 							'default' => 'no',
@@ -255,13 +258,13 @@ FLBuilder::register_module(
 						'sticky_disable'        => array(
 							'type'         => 'select',
 							'label'        => __( 'Disabled On', 'multi-button-plugin' ),
-							'default'      => 'mobile',
+							'default'      => 'none',
 							'options'      => array(
-								'mobile'  => __( 'Mobile', 'multi-button-plugin' ),
-								'tablet'  => __( 'Tablet', 'multi-button-plugin' ),
-								'desktop' => __( 'Desktop', 'multi-button-plugin' ),
+								'none'    => __( 'None', 'multi-button-plugin' ),
+								'mobile'  => __( 'Mobile(< 768px)', 'multi-button-plugin' ),
+								'tablet'  => __( 'Tablet(< 1025px)', 'multi-button-plugin' ),
+								'desktop' => __( 'Desktop(< 1600px)', 'multi-button-plugin' ),
 							),
-							'multi-select' => true,
 						),
 						'sticky_type'           => array(
 							'type'    => 'select',
@@ -289,8 +292,8 @@ FLBuilder::register_module(
 							'default_unit' => '%', // Optional.
 							'preview'      => array(
 								'type'     => 'css',
-								'selector' => '.my-class',
-								'property' => 'width',
+								'selector' => '.tc-sticky-custom',
+								'property' => 'left',
 							),
 						),
 						'vertical_position'     => array(
@@ -302,8 +305,8 @@ FLBuilder::register_module(
 							'default_unit' => '%', // Optional.
 							'preview'      => array(
 								'type'     => 'css',
-								'selector' => '.my-class',
-								'property' => 'width',
+								'selector' => '.tc-sticky-custom',
+								'property' => 'bottom',
 							),
 						),
 						'fixed_offset_position' => array(
@@ -315,8 +318,8 @@ FLBuilder::register_module(
 							'default_unit' => '%', // Optional.
 							'preview'      => array(
 								'type'     => 'css',
-								'selector' => '.my-class',
-								'property' => 'width',
+								'selector' => '.tc-sticky-fixed',
+								'property' => 'left',
 							),
 						),
 					),
@@ -345,8 +348,8 @@ FLBuilder::register_module(
 							'default' => 'center',
 							'preview' => array(
 								'type'     => 'css',
-								'selector' => '.my-selector',
-								'property' => 'text-align',
+								'selector' => '',
+								'property' => '',
 							),
 						),
 						'scroll_horizontal_position' => array(
@@ -409,7 +412,7 @@ FLBuilder::register_module(
 							'responsive' => true,
 							'preview'    => array(
 								'type'     => 'css',
-								'selector' => '.my-selector',
+								'selector' => '.tc-container',
 							),
 						),
 						'box_min_height' => array(
@@ -421,8 +424,8 @@ FLBuilder::register_module(
 							'default_unit' => 'px', // Optional.
 							'preview'      => array(
 								'type'     => 'css',
-								'selector' => '.my-class',
-								'property' => 'width',
+								'selector' => '.tc-container',
+								'property' => 'height',
 							),
 						),
 					),
@@ -436,7 +439,7 @@ FLBuilder::register_module(
 							'default' => 'left',
 							'preview' => array(
 								'type'     => 'css',
-								'selector' => '.my-selector',
+								'selector' => '.tc-header-title',
 								'property' => 'text-align',
 							),
 						),
@@ -483,8 +486,8 @@ FLBuilder::register_module(
 							'slider'  => true,
 							'preview' => array(
 								'type'     => 'css',
-								'selector' => '.my-class',
-								'property' => 'width',
+								'selector' => '.tc-seperator',
+								'property' => 'height',
 							),
 						),
 						'header_seperator_color' => array(
@@ -493,6 +496,11 @@ FLBuilder::register_module(
 							'default'    => '',
 							'show_reset' => true,
 							'show_alpha' => false,
+							'preview'    => array(
+								'type'     => 'css',
+								'selector' => '.tc-seperator',
+								'property' => 'background-color',
+							),
 						),
 					),
 				),
@@ -514,39 +522,39 @@ FLBuilder::register_module(
 								'selector' => '',
 							),
 						),
-						'list_heading_select'   => array(
-							'type'    => 'select',
-							'label'   => __( 'Heading Select', 'multi-button-plugin' ),
-							'default' => 'h2',
-							'options' => array(
-								'h2' => __( 'H2', 'multi-button-plugin' ),
-								'h3' => __( 'H3', 'multi-button-plugin' ),
-								'h4' => __( 'H3', 'multi-button-plugin' ),
-								'h5' => __( 'H3', 'multi-button-plugin' ),
-								'h6' => __( 'H3', 'multi-button-plugin' ),
-							),
-						),
-						'list_heading_typo'     => array(
-							'type'       => 'typography',
-							'label'      => __( 'Typography', 'multi-button-plugin' ),
-							'responsive' => true,
-							'preview'    => array(
-								'type'     => 'css',
-								'selector' => '',
-							),
-						),
-						'list_indent'           => array(
-							'type'       => 'unit',
-							'label'      => __( 'Indent', 'multi-button-plugin' ),
-							'units'      => array( 'px', 'em' ),
-							'slider'     => true,
-							'responsive' => true,
-							'preview'    => array(
-								'type'     => 'css',
-								'selector' => '.my-class',
-								'property' => 'width',
-							),
-						),
+						// 'list_heading_select'   => array(
+						// 'type'    => 'select',
+						// 'label'   => __( 'Heading Select', 'multi-button-plugin' ),
+						// 'default' => 'h2',
+						// 'options' => array(
+						// 'h2' => __( 'H2', 'multi-button-plugin' ),
+						// 'h3' => __( 'H3', 'multi-button-plugin' ),
+						// 'h4' => __( 'H3', 'multi-button-plugin' ),
+						// 'h5' => __( 'H3', 'multi-button-plugin' ),
+						// 'h6' => __( 'H3', 'multi-button-plugin' ),
+						// ),
+						// ),
+						// 'list_heading_typo'     => array(
+						// 'type'       => 'typography',
+						// 'label'      => __( 'Typography', 'multi-button-plugin' ),
+						// 'responsive' => true,
+						// 'preview'    => array(
+						// 'type'     => 'css',
+						// 'selector' => '',
+						// ),
+						// ),
+						// 'list_indent'           => array(
+						// 'type'       => 'unit',
+						// 'label'      => __( 'Indent', 'multi-button-plugin' ),
+						// 'units'      => array( 'px', 'em' ),
+						// 'slider'     => true,
+						// 'responsive' => true,
+						// 'preview'    => array(
+						// 'type'     => 'css',
+						// 'selector' => '.my-class',
+						// 'property' => 'width',
+						// ),
+						// ),
 						'list_status'           => array(
 							'type'    => 'select',
 							'label'   => __( 'List Items Status', 'multi-button-plugin' ),
@@ -622,25 +630,25 @@ FLBuilder::register_module(
 								'yes' => __( 'Yes', 'multi-button-plugin' ),
 							),
 						),
-						'list_marker_color'     => array(
-							'type'       => 'color',
-							'label'      => __( 'Marker Color', 'multi-button-plugin' ),
-							'default'    => '',
-							'show_reset' => true,
-							'show_alpha' => false,
-						),
-						'list_marker_size'      => array(
-							'type'       => 'unit',
-							'label'      => __( 'Marker Size', 'multi-button-plugin' ),
-							'units'      => array( 'px', 'em' ),
-							'slider'     => true,
-							'responsive' => true,
-							'preview'    => array(
-								'type'     => 'css',
-								'selector' => '.my-class',
-								'property' => '',
-							),
-						),
+						// 'list_marker_color'     => array(
+						// 'type'       => 'color',
+						// 'label'      => __( 'Marker Color', 'multi-button-plugin' ),
+						// 'default'    => '',
+						// 'show_reset' => true,
+						// 'show_alpha' => false,
+						// ),
+						// 'list_marker_size'      => array(
+						// 'type'       => 'unit',
+						// 'label'      => __( 'Marker Size', 'multi-button-plugin' ),
+						// 'units'      => array( 'px', 'em' ),
+						// 'slider'     => true,
+						// 'responsive' => true,
+						// 'preview'    => array(
+						// 'type'     => 'css',
+						// 'selector' => '.my-class',
+						// 'property' => '',
+						// ),
+						// ),
 					),
 				),
 				'sticky_style_section' => array(
@@ -655,7 +663,7 @@ FLBuilder::register_module(
 							'default_unit' => '%', // Optional.
 							'preview'      => array(
 								'type'     => 'css',
-								'selector' => '.my-class',
+								'selector' => '.tc-sticky-custom, .tc-sticky-fixed',
 								'property' => 'width',
 							),
 						),
@@ -670,8 +678,8 @@ FLBuilder::register_module(
 							),
 							'preview' => array(
 								'type'     => 'css',
-								'selector' => '.my-class',
-								'property' => '',
+								'selector' => '.tc-sticky-custom',
+								'property' => 'opacity',
 							),
 						),
 						'sticky_toc_shadow'  => array(
@@ -680,7 +688,7 @@ FLBuilder::register_module(
 							'show_spread' => true,
 							'preview'     => array(
 								'type'     => 'css',
-								'selector' => '.my-selector',
+								'selector' => '.tc-sticky-custom',
 								'property' => 'box-shadow',
 							),
 						),
@@ -697,8 +705,8 @@ FLBuilder::register_module(
 							'responsive' => true,
 							'preview'    => array(
 								'type'     => 'css',
-								'selector' => '.my-class',
-								'property' => '',
+								'selector' => '.tc-scroll-top-icon',
+								'property' => 'font-size',
 							),
 						),
 						'scroll_top_padding' => array(
@@ -708,8 +716,8 @@ FLBuilder::register_module(
 							'slider'  => true,
 							'preview' => array(
 								'type'     => 'css',
-								'selector' => '.my-class',
-								'property' => '',
+								'selector' => '.tc-scroll-top-container',
+								'property' => 'padding',
 							),
 						),
 						'scroll_icon_color'  => array(
@@ -718,6 +726,11 @@ FLBuilder::register_module(
 							'default'    => '',
 							'show_reset' => true,
 							'show_alpha' => false,
+							'preview' => array(
+								'type'     => 'css',
+								'selector' => '.tc-scroll-top-icon',
+								'property' => 'color',
+							),
 						),
 						'scroll_bg_color'    => array(
 							'type'       => 'color',
@@ -725,6 +738,11 @@ FLBuilder::register_module(
 							'default'    => '',
 							'show_reset' => true,
 							'show_alpha' => true,
+							'preview' => array(
+								'type'     => 'css',
+								'selector' => '.tc-scroll-top-container',
+								'property' => 'background-color',
+							),
 						),
 						'scroll_border'      => array(
 							'type'       => 'border',
@@ -732,7 +750,7 @@ FLBuilder::register_module(
 							'responsive' => true,
 							'preview'    => array(
 								'type'     => 'css',
-								'selector' => '.my-selector',
+								'selector' => '.tc-scroll-top-container',
 							),
 						),
 					),

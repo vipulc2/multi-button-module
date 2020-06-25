@@ -36,6 +36,15 @@
 	<?php } ?>
 }
 
+.fl-node-<?php echo $id; ?> .tc-seperator {
+	<?php if ( isset( $settings->header_seperator_width ) && '' !== ( $settings->header_seperator_width ) ) { ?>
+	height: <?php echo $settings->header_seperator_width; ?>px;
+	<?php } ?>
+	<?php if ( isset( $settings->header_seperator_color ) && ! empty( $settings->header_seperator_color ) ) { ?>
+	background-color: #<?php echo $settings->header_seperator_color; ?>;
+	<?php } ?>
+}
+
 .fl-node-<?php echo $id; ?> .tc-lists li {
 	<?php if ( isset( $settings->list_normal_color ) && ! empty( $settings->list_normal_color ) ) { ?>
 	color: #<?php echo $settings->list_normal_color; ?>;
