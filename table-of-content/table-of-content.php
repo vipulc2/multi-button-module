@@ -138,10 +138,11 @@ FLBuilder::register_module(
 							'help'         => __( 'Select multiple headings you want to include with Shift + click', 'multi-button-plugin' ),
 						),
 						'include_container' => array(
-							'type'    => 'text',
-							'default' => 'body',
-							'label'   => __( 'Container', 'multi-button-plugin' ),
-							'help'    => __( 'Type in the container you want to include the headings from. Remember to use period(.) before a class and (#) before an ID you want to include from', 'multi-button-plugin' ),
+							'type'        => 'text',
+							'default'     => 'body',
+							'label'       => __( 'Container', 'multi-button-plugin' ),
+							'help'        => __( 'Type in the container you want to include the headings from. Remember to use period(.) before a class and (#) before an ID you want to include from', 'multi-button-plugin' ),
+							'description' => __( 'Ex: body or .container-class or #container-id', 'multi-button-plugin' ),
 						),
 					),
 				),
@@ -149,10 +150,11 @@ FLBuilder::register_module(
 					'title'  => __( 'Exclude', 'multi-button-plugin' ),
 					'fields' => array(
 						'exclude_container' => array(
-							'type'    => 'text',
-							'label'   => __( 'Container', 'multi-button-plugin' ),
-							'default' => '',
-							'help'    => __( 'Use (.) before classname and (#) before ID and seperate multiple elements with a comma(,)', 'multi-button-plugin' ),
+							'type'        => 'text',
+							'label'       => __( 'Container', 'multi-button-plugin' ),
+							'default'     => '',
+							'help'        => __( 'Use (.) before classname and (#) before ID and seperate multiple elements with a comma(,) and a single space afterward', 'multi-button-plugin' ),
+							'description' => __( 'Ex: .container-class, #container-id', 'multi-button-plugin' ),
 						),
 					),
 				),
@@ -190,10 +192,10 @@ FLBuilder::register_module(
 							'show_remove' => true,
 						),
 						'collapse_on'         => array(
-							'type'         => 'select',
-							'label'        => __( 'Collapse On', 'multi-button-plugin' ),
-							'default'      => 'none',
-							'options'      => array(
+							'type'    => 'select',
+							'label'   => __( 'Collapse On', 'multi-button-plugin' ),
+							'default' => 'none',
+							'options' => array(
 								'none'    => __( 'None', 'multi-button-plugin' ),
 								'mobile'  => __( 'Mobile(< 768px)', 'multi-button-plugin' ),
 								'tablet'  => __( 'Tablet(< 1025px)', 'multi-button-plugin' ),
@@ -256,10 +258,10 @@ FLBuilder::register_module(
 					'title'  => __( 'Sticky TOC', 'multi-button-plugin' ),
 					'fields' => array(
 						'sticky_disable'        => array(
-							'type'         => 'select',
-							'label'        => __( 'Disabled On', 'multi-button-plugin' ),
-							'default'      => 'none',
-							'options'      => array(
+							'type'    => 'select',
+							'label'   => __( 'Disabled On', 'multi-button-plugin' ),
+							'default' => 'none',
+							'options' => array(
 								'none'    => __( 'None', 'multi-button-plugin' ),
 								'mobile'  => __( 'Mobile(< 768px)', 'multi-button-plugin' ),
 								'tablet'  => __( 'Tablet(< 1025px)', 'multi-button-plugin' ),
@@ -726,7 +728,7 @@ FLBuilder::register_module(
 							'default'    => '',
 							'show_reset' => true,
 							'show_alpha' => false,
-							'preview' => array(
+							'preview'    => array(
 								'type'     => 'css',
 								'selector' => '.tc-scroll-top-icon',
 								'property' => 'color',
@@ -738,7 +740,7 @@ FLBuilder::register_module(
 							'default'    => '',
 							'show_reset' => true,
 							'show_alpha' => true,
-							'preview' => array(
+							'preview'    => array(
 								'type'     => 'css',
 								'selector' => '.tc-scroll-top-container',
 								'property' => 'background-color',

@@ -6,7 +6,7 @@
 
 .fl-node-<?php echo $id; ?> .tc-header-title {
 	<?php if ( isset( $settings->header_alignment ) && ! empty( $settings->header_alignment ) ) { ?>
-	text-align: <?php echo $settings->header_alignment; ?>;
+	text-align: <?php echo esc_html( $settings->header_alignment ); ?>;
 	<?php } ?>
 	<?php if ( isset( $settings->header_text_color ) && ! empty( $settings->header_text_color ) ) { ?>
 	color: #<?php echo ( $settings->header_text_color ); ?>;
